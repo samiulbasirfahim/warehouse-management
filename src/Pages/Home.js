@@ -5,6 +5,54 @@ const Home = () => {
 	return (
 		<div>
 			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
+			<HomeBanner></HomeBanner>
 		</div>
 	)
 }

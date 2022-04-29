@@ -1,31 +1,28 @@
 import React, { useEffect, useState } from "react"
 import { NavLink } from "react-router-dom"
-import { useScrollTracker } from "react-scroll-tracker"
 import { HiOutlineMenu, HiOutlineMenuAlt1 } from "react-icons/hi"
+import { useScrollTracker } from "react-scroll-tracker"
 
 const Header = () => {
-	const { scrollY } = useScrollTracker()
-	console.log(scrollY)
-	const [navSize, setNavSize] = useState("large")
+	const [scrollY, setScrollY] = useState(0)
+	const { scrollY: scrollhook } = useScrollTracker()
 	useEffect(() => {
-		if (scrollY < 30) {
-			setNavSize("large")
-		} else {
-			setNavSize("small")
-		}
-	}, [scrollY])
+		setScrollY(window.scrollY)
+		console.log(scrollY)
+	}, [scrollhook])
 	const [menuOpen, setMenuOpen] = useState(false)
+
 	return (
 		<header
-			className={`${
-				navSize === "large"
-					? "h-[10vh] md:h-[12vh]"
-					: "h-[6vh] md:h-[8vh]"
-			} sticky  top-0 container mx-auto`}
+			className={`fixed w-full top-0 duration-100 ${
+				scrollY < 100
+					? "h-[12vh] backdrop-blur-[0.8px]"
+					: "h-[6vh] backdrop-blur-[8px]"
+			}`}
 		>
 			<div
 				className={
-					"absolute md:static top-0 h-full right-0 z-50 w-full bg-white  flex justify-between items-center"
+					"absolute md:static top-0 h-full right-0 z-50 w-full  flex justify-between items-center"
 				}
 			>
 				<p>Rapid Dealer</p>

@@ -7,14 +7,14 @@ function App() {
 	const { isDarkMode } = useDarkMode()
 	return (
 		<div className={`${isDarkMode && "dark"}`}>
-			<Header></Header>
 			<div className="min-h-[100vh]">
+				<Header></Header>
 				{/* 
     React router routes setup
     */}
 				<Routes>
-          <Route path="/" element={<Home></Home>}></Route>
-        </Routes>
+					<Route path="/" element={<Home></Home>}></Route>
+				</Routes>
 			</div>
 		</div>
 	)

@@ -12,18 +12,17 @@ const Header = () => {
 	}, [scrollY, scrollwork])
 	const [menuOpen, setMenuOpen] = useState(false)
 	const activeNavStyle = {
-		backgroundColor: "rgba(241, 186, 176,0.25)",
+		color: "#90ba14",
+		backgroundColor: "#fff",
 		borderRadius: "15px",
-		boxShadow: "1px 1px 8px 1px rgba(235, 79, 68)",
-		color: "red",
 	}
 
 	return (
 		<div>
 			<header
-				className={`fixed py-4 w-full z-50 top-0 duration-500 md:px-8 xl:px-26 2xl:px-36 flex items-center justify-between ${
+				className={`fixed w-full z-50 top-0 duration-500 md:px-8 xl:px-26 2xl:px-36 flex items-center justify-between ${
 					scrollY < 1000
-						? "h-[14vh] backdrop-blur-[0px] text-black"
+						? "h-[14vh] backdrop-blur-[0px] lg:text-black"
 						: "h-[8vh] backdrop-blur-[50px] text-white bg-black/60"
 				}`}
 			>
@@ -60,14 +59,14 @@ const Header = () => {
 							style={
 								menuOpen ? { top: "4vh" } : { top: "-100vh" }
 							}
-							className="grid gap-0 lg:flex pt-12 lg:pt-0 justify-items-center items-center w-full  lg:ml-auto lg:justify-between h-[80vh] bg-gray-800/80 lg:backdrop-blur-0 backdrop-blur-xl lg:bg-transparent lg:h-auto absolute lg:static duration-700"
+							className="grid gap-0 lg:flex pt-12 lg:pt-0 justify-items-center items-center w-full  lg:ml-auto lg:justify-between h-[80vh] bg-gray-800/90 lg:backdrop-blur-0 backdrop-blur-xl lg:bg-transparent lg:h-auto absolute lg:static duration-700"
 						>
 							<NavLink
 								style={({ isActive }) =>
 									isActive ? activeNavStyle : {}
 								}
 								className={
-									"   font-bold  py-[8px] ml-0 px-[30px]"
+									"   font-bold  py-[8px] ml-0 px-[30px] hover:text-[#90ba14]"
 								}
 								to={"/"}
 							>
@@ -78,29 +77,29 @@ const Header = () => {
 									isActive ? activeNavStyle : {}
 								}
 								className={
-									"   font-bold  py-[8px] mx-0  px-[30px]"
+									"   font-bold  py-[8px] mx-0  px-[30px] hover:text-[#90ba14]"
 								}
 								to={"/inventory"}
 							>
 								Inventory
 							</NavLink>
-							<NavLink
+							{/* <NavLink
 								style={({ isActive }) =>
 									isActive ? activeNavStyle : {}
 								}
 								className={
-									"   font-bold  py-[8px] mx-0  px-[30px]"
+									"   font-bold  py-[8px] mx-0  px-[30px] hover:text-[#90ba14]"
 								}
 								to={"/services"}
 							>
 								Services
-							</NavLink>
+							</NavLink> */}
 							<NavLink
 								style={({ isActive }) =>
 									isActive ? activeNavStyle : {}
 								}
 								className={
-									"   font-bold  py-[8px]  mx-0 px-[30px]"
+									"   font-bold  py-[8px]  mx-0 px-[30px] hover:text-[#90ba14]"
 								}
 								to={"/about"}
 							>
@@ -112,7 +111,7 @@ const Header = () => {
 								}
 								to="/login"
 								className={
-									"   font-bold  py-[8px] mx-0  px-[30px] "
+									"   font-bold  py-[8px] mx-0  px-[30px] hover:text-[#90ba14] "
 								}
 							>
 								Login

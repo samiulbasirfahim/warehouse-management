@@ -17,12 +17,13 @@ const HomeBanner = () => {
 	const welcomeTo = batch(Fade(), Sticky(), MoveOut(400, -200), ZoomOut())
 	const RapidDealer = batch(StickyIn(), FadeIn(), ZoomIn())
 	return (
-		<div className="text-4xl bg-[url('https://i.ibb.co/WgvQN6K/blue-jeep-parking-public-zone-2.jpg')] bg-cover bg-no-repeat w-full">
+		<div className="text-4xl w-full min-h-full
+		bg-blend-overlay bg-fixed bg-center bg-no-repeat bg-cover  bg-[url('https://i.ibb.co/JsyDd3T/raphael-schaller-o-Xq5-Hbf-c-g-unsplash.jpg')]">
 			<ScrollContainer>
 				<ScrollPage page={0}>
 					<Animator animation={welcomeTo}>
 						<span
-							className="text-white font-extrabold lg:text-6xl whitespace-nowrap"
+							className="text-gray-800 font-extrabold lg:text-9xl whitespace-nowrap"
 							style={{
 								fontFamily: "monospace",
 							}}
@@ -34,7 +35,7 @@ const HomeBanner = () => {
 				<ScrollPage page={1}>
 					<Animator animation={RapidDealer}>
 						<span
-							className="text-white font-extrabold lg:text-6xl whitespace-nowrap"
+							className="text-gray-800  font-extrabold lg:text-9xl whitespace-nowrap"
 							style={{
 								fontFamily: "monospace",
 							}}

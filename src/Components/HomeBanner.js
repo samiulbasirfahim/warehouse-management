@@ -24,14 +24,14 @@ const HomeBanner = () => {
 			<ScrollContainer>
 				<ScrollPage page={0}>
 					<Animator animation={welcomeTo}>
-						<span className="text-gray-900 font-extrabold lg:text-9xl whitespace-nowrap font-mono">
+						<span className="text-[#ff5722] font-extrabold lg:text-9xl whitespace-nowrap font-mono">
 							Welcome to
 						</span>
 					</Animator>
 				</ScrollPage>
 				<ScrollPage page={1}>
 					<Animator animation={RapidDealer}>
-						<span className="text-gray-900 font-extrabold lg:text-9xl whitespace-nowrap font-mono">
+						<span className="text-[#ff5722] font-extrabold lg:text-9xl whitespace-nowrap font-mono">
 							Rapid Dealer
 						</span>
 					</Animator>

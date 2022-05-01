@@ -2,8 +2,12 @@ import React, { useEffect, useState } from "react"
 import { Link, NavLink } from "react-router-dom"
 import { HiOutlineMenu, HiOutlineMenuAlt1 } from "react-icons/hi"
 import { useScrollTracker } from "react-scroll-tracker"
+import { useAuthState } from "react-firebase-hooks/auth"
+import auth from "../firebase.init"
 
 const Header = () => {
+	const [user] = useAuthState(auth)
+	console.log(user)
 	const [scrollY, setScrollY] = useState(0)
 	const { scrollY: scrollwork } = useScrollTracker()
 	useEffect(() => {
@@ -22,8 +26,8 @@ const Header = () => {
 			<header
 				className={`fixed w-full z-50 top-0 duration-500 md:px-8 xl:px-26 2xl:px-36 flex items-center justify-between ${
 					scrollY < 1000
-						? "h-[14vh] backdrop-blur-[0px] lg:text-black"
-						: "h-[8vh] backdrop-blur-[50px] text-white bg-black/60"
+						? "min-h-[14vh] backdrop-blur-[0px] lg:text-black"
+						: "min-h-[8vh] backdrop-blur-[50px] text-white bg-black/60"
 				}`}
 			>
 				<div
@@ -35,10 +39,10 @@ const Header = () => {
 						to="/"
 						className="text-3xl lg:text-5xl font-bold flex items-center font-mono"
 					>
-						<span className="pr-2 lg:pr-4 text-green-600 border-t-2 border-r-2 border-red-400 pt-1 lg:pt-2">
+						<span className="pr-2 lg:pr-4 text-[#ff5722] border-t-2 border-r-2 border-[#90ba14] pt-1 lg:pt-2">
 							Rapid
 						</span>
-						<span className="text-red-600 border-b-2 border-l-2  border-green-400 lg:pb-2 pb-1">
+						<span className="text-[#90ba14] border-b-2 border-l-2  border-[#ff5722] lg:pb-2 pb-1">
 							Dealer
 						</span>
 					</Link>
@@ -105,17 +109,23 @@ const Header = () => {
 							>
 								About
 							</NavLink>
-							<NavLink
-								style={({ isActive }) =>
-									isActive ? activeNavStyle : {}
-								}
-								to="/login"
-								className={
-									"   font-bold  py-[8px] mx-0  px-[30px] hover:text-[#90ba14] "
-								}
-							>
-								Login
-							</NavLink>
+							{user ? (
+								<NavLink
+									style={({ isActive }) =>
+										isActive ? activeNavStyle : {}
+									}
+									to="/login"
+									className={
+										"   font-bold  py-[8px] mx-0  px-[30px] hover:text-[#90ba14] "
+									}
+								>
+									Login
+								</NavLink>
+							) : (
+								<button className="font-bold py-[8px] mx-0 px-[30px] border-l-2 text-[#ff5722]">
+									Sign out
+								</button>
+							)}
 						</ul>
 					</nav>
 				</div>

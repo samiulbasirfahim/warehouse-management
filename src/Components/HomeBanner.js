@@ -10,19 +10,19 @@ import {
 	Sticky,
 	StickyIn,
 	ZoomIn,
+	ZoomOut,
 } from "react-scroll-motion"
 
 const HomeBanner = () => {
-	const ZoomInScrollOut = batch(StickyIn(), FadeIn(), ZoomIn())
+	const welcomeTo = batch(Fade(), Sticky(), MoveOut(400, -200), ZoomOut())
+	const RapidDealer = batch(StickyIn(), FadeIn(), ZoomIn())
 	return (
 		<div className="text-4xl bg-[url('https://i.ibb.co/WgvQN6K/blue-jeep-parking-public-zone-2.jpg')] bg-cover bg-no-repeat w-full">
 			<ScrollContainer>
 				<ScrollPage page={0}>
-					<Animator
-						animation={batch(Fade(), Sticky(), MoveOut(400, -200))}
-					>
+					<Animator animation={welcomeTo}>
 						<span
-							className="text-white font-extrabold lg:text-6xl"
+							className="text-white font-extrabold lg:text-6xl whitespace-nowrap"
 							style={{
 								fontFamily: "monospace",
 							}}
@@ -32,9 +32,9 @@ const HomeBanner = () => {
 					</Animator>
 				</ScrollPage>
 				<ScrollPage page={1}>
-					<Animator animation={ZoomInScrollOut}>
+					<Animator animation={RapidDealer}>
 						<span
-							className="text-white font-extrabold lg:text-6xl"
+							className="text-white font-extrabold lg:text-6xl whitespace-nowrap"
 							style={{
 								fontFamily: "monospace",
 							}}

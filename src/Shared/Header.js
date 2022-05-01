@@ -23,8 +23,8 @@ const Header = () => {
 			<header
 				className={`fixed w-full z-50 py-2 top-0 duration-500 md:px-8 xl:px-26 2xl:px-36 flex items-center justify-between ${
 					scrollY < 600
-						? "h-[14vh] backdrop-blur-[0px]"
-						: "h-[6vh] backdrop-blur-[50px]"
+						? "h-[14vh] backdrop-blur-[0px] text-black"
+						: "h-[6vh] backdrop-blur-[50px] text-white"
 				}`}
 			>
 				<div
@@ -44,7 +44,7 @@ const Header = () => {
 						</span>
 					</Link>
 					<span
-						className="lg:hidden"
+						className="lg:hidden text-black"
 						onClick={() => setMenuOpen(!menuOpen)}
 					>
 						{menuOpen ? (

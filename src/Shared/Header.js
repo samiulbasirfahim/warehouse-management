@@ -24,7 +24,7 @@ const Header = () => {
 	return (
 		<div>
 			<header
-				className={`fixed w-full z-50 top-0 duration-500 md:px-8 xl:px-26 2xl:px-36 flex items-center justify-between ${
+				className={`fixed w-full z-50 top-0  duration-500 md:px-8 xl:px-26 2xl:px-36 flex items-center justify-between ${
 					scrollY < 1000
 						? "min-h-[14vh] backdrop-blur-[0px] lg:text-black"
 						: "min-h-[8vh] backdrop-blur-[50px] text-white bg-black/60"
@@ -109,7 +109,7 @@ const Header = () => {
 							>
 								About
 							</NavLink>
-							{user ? (
+							{!user ? (
 								<NavLink
 									style={({ isActive }) =>
 										isActive ? activeNavStyle : {}

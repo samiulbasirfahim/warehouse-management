@@ -1,6 +1,8 @@
 import { Route, Routes } from "react-router-dom"
 import useDarkMode from "./Hooks/useDarkMode"
 import Home from "./Pages/Home"
+import Login from "./Pages/Login"
+import Register from "./Pages/Register"
 import Header from "./Shared/Header"
 
 function App() {
@@ -14,6 +16,8 @@ function App() {
     */}
 				<Routes>
 					<Route path="/" element={<Home></Home>}></Route>
+					<Route path='/login'element={<Login></Login>}></Route>
+					<Route path='/register'element={<Register></Register>}></Route>
 				</Routes>
 			</div>
 		</div>

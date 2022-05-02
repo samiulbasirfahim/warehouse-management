@@ -2,7 +2,7 @@ import React from "react"
 import { ImPriceTags } from "react-icons/im"
 import { useNavigate } from "react-router-dom"
 
-const Product = () => {
+const Car = () => {
 	const imageLink = "https://i.ibb.co/X5LY5n6/download.jpg"
 	const title = "Porsche Cayman"
 	const description =
@@ -40,16 +40,21 @@ const Product = () => {
 						: description}
 				</p>
 				<p className="text-[#ff5722] text-sm">Stock : {stock}</p>
-				<p className="text-[#ff5722] text-sm">Supplier : {supplierName}</p>
+				<p className="text-[#ff5722] text-sm">
+					Supplier : {supplierName}
+				</p>
 				<p className="flex items-center text-center my-2 font-semibold font-mono lg:text-xl">
 					<ImPriceTags />
 					<span className="ml-4">$_{price}</span>
 				</p>
-				<button onClick={() => navigate('/update-product/'+_id)} className="py-3 mt-4 w-full lg:w-1/2 rounded text-white font-bold font-mono font-xl bg-[#90ba14]">
-					Update product
+				<button
+					onClick={() => navigate("/update/" + _id)}
+					className="py-3 mt-4 w-full lg:w-1/2 rounded text-white font-bold font-mono font-xl bg-[#90ba14]"
+				>
+					Update
 				</button>
 			</div>
 		</div>
 	)
 }
-export default Product
+export default Car

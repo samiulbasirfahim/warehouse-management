@@ -1,3 +1,4 @@
+import { Toaster } from "react-hot-toast"
 import { Route, Routes } from "react-router-dom"
 import useDarkMode from "./Hooks/useDarkMode"
 import Home from "./Pages/Home"
@@ -10,16 +11,20 @@ function App() {
 	return (
 		<div className={`${isDarkMode && "dark"}`}>
 			<div className="min-h-[100vh]">
-			<Header></Header>
+				<Header></Header>
 				{/* 
     React router routes setup
     */}
 				<Routes>
 					<Route path="/" element={<Home></Home>}></Route>
-					<Route path='/login'element={<Login></Login>}></Route>
-					<Route path='/register'element={<Register></Register>}></Route>
+					<Route path="/login" element={<Login></Login>}></Route>
+					<Route
+						path="/register"
+						element={<Register></Register>}
+					></Route>
 				</Routes>
 			</div>
+			<Toaster />
 		</div>
 	)
 }

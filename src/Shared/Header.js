@@ -7,12 +7,10 @@ import auth from "../firebase.init"
 
 const Header = () => {
 	const [user] = useAuthState(auth)
-	console.log(user)
 	const [scrollY, setScrollY] = useState(0)
 	const { scrollY: scrollwork } = useScrollTracker()
 	useEffect(() => {
 		setScrollY(window.scrollY)
-		console.log(scrollY)
 	}, [scrollY, scrollwork])
 	const [menuOpen, setMenuOpen] = useState(false)
 	const activeNavStyle = {

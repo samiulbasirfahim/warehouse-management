@@ -1,15 +1,70 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import SocialLogin from "../Components/SocialLogin"
 import { Link } from "react-router-dom"
 
 const Register = () => {
 	const [showpass, setShowPass] = useState(false)
+	const [errorName, setNameError] = useState("")
+	const [errorPassword, setPasswordError] = useState("")
+	const [errorConfirmPassword, setConfirmPasswordError] = useState("")
+	const [userInfo, setUserInfo] = useState({
+		name: "",
+		email: "",
+		password: "",
+		confirmPassword: "",
+	})
 
+	useEffect(() => {
+		if (userInfo.name.length < 3) {
+			setNameError("Your name must be at least 3 characters")
+		} else {
+			setNameError("")
+		}
+	}, [userInfo])
+	useEffect(() => {
+		if (userInfo.password.length < 8) {
+			setPasswordError("Your password must be at least 8 characters")
+		} else if (
+			userInfo.password.includes(userInfo.name) &&
+			userInfo.name !== ""
+		) {
+			setPasswordError("Your cant use your name in your password")
+		} else if (
+			!/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*]).{8,}$/.test(
+				userInfo.password
+			)
+		) {
+			setPasswordError("your password is too weak")
+		} else {
+			setPasswordError("")
+		}
+	}, [userInfo])
+	useEffect(() => {
+		if (userInfo.password !== userInfo.confirmPassword) {
+			setConfirmPasswordError("Password mismatch")
+		} else {
+			setConfirmPasswordError("")
+		}
+	}, [userInfo])
+	const handleRegister = (event) => {
+		event.preventDefault()
+		const name = event.target.name.value
+		const email = event.target.email.value
+		const password = event.target.password.value
+		const confirmPassword = event.target.confirmPassword.value
+		console.log(name, email, password, confirmPassword)
+	}
+	const handleUserInfo = (event) => {
+		setUserInfo({
+			...userInfo,
+			[event.target.name]: event.target.value,
+		})
+	}
 	return (
 		<div>
 			<div className="">
 				<div className="pt-[12vh] bg-indigo-50 min-h-screen min-w-screen flex items-center justify-center">
-					<div className="xl:px-20 lg:px-10 sm:px-6 px-4 lg:py-12 py-9 ">
+					<div className="xl:px-20 lg:px-10 sm:px-6 px-4 lg:py-12 py-9 lg:w-1/3 ">
 						<div className="bg-white shadow-lg rounded  w-full lg:px-10 sm:px-6 sm:py-10 px-2 py-6">
 							<p
 								tabIndex={0}
@@ -24,13 +79,35 @@ const Register = () => {
 								Already have a account ?
 								<Link
 									to={"/login"}
-									className="hover:text-gray-500 focus:text-gray-500 focus:outline-none focus:underline hover:underline text-sm font-medium leading-none text-gray-800 cursor-pointer"
+									className="hover:underline text-sm font-medium leading-none text-blue-700 cursor-pointer"
 								>
 									Sign in here
 								</Link>
 							</p>
 							<SocialLogin></SocialLogin>
-							<form>
+							<form onSubmit={handleRegister}>
+								<div>
+									<label
+										htmlFor="email"
+										className="text-sm font-medium leading-none text-gray-800"
+									>
+										Full Name
+									</label>
+									<input
+										onChange={(event) =>
+											handleUserInfo(event)
+										}
+										id="name"
+										type="text"
+										name="name"
+										className="bg-gray-200 border rounded text-xs font-medium text-gray-800 py-3 w-full pl-3 mt-2"
+									/>
+									{userInfo.name !== "" && (
+										<p className="text-xs text-red-600">
+											{errorName}
+										</p>
+									)}
+								</div>
 								<div>
 									<label
 										htmlFor="email"
@@ -39,23 +116,29 @@ const Register = () => {
 										Email
 									</label>
 									<input
+										onChange={(event) =>
+											handleUserInfo(event)
+										}
 										id="email"
 										type="email"
-                                        name="email"
+										name="email"
 										className="bg-gray-200 border rounded text-xs font-medium text-gray-800 py-3 w-full pl-3 mt-2"
 									/>
 								</div>
 								<div className="mt-6 w-full">
 									<label
-										htmlFor="myInput"
+										htmlFor="password"
 										className="text-sm font-medium leading-none text-gray-800"
 									>
 										Password
 									</label>
 									<div className="relative flex items-center justify-center">
 										<input
-											id="myInput"
-                                            name="password"
+											onChange={(event) =>
+												handleUserInfo(event)
+											}
+											id="password"
+											name="password"
 											type={
 												showpass ? "text" : "password"
 											}
@@ -83,18 +166,26 @@ const Register = () => {
 											</div>
 										</div>
 									</div>
+									{userInfo.password !== "" && (
+										<p className="text-xs text-red-600">
+											{errorPassword}
+										</p>
+									)}
 								</div>
 								<div className="mt-6 w-full">
 									<label
-										htmlFor="myInput"
+										htmlFor="confirmPassword"
 										className="text-sm font-medium leading-none text-gray-800"
 									>
 										Confirm Password
 									</label>
 									<div className="relative flex items-center justify-center">
 										<input
-                                            name="confirmPassword"
-											id="myInput"
+											onChange={(event) =>
+												handleUserInfo(event)
+											}
+											name="confirmPassword"
+											id="confirmPassword"
 											type={
 												showpass ? "text" : "password"
 											}
@@ -122,11 +213,17 @@ const Register = () => {
 											</div>
 										</div>
 									</div>
+									{userInfo.confirmPassword !== "" && (
+										<p className="text-xs text-red-600">
+											{errorConfirmPassword}
+										</p>
+									)}
 								</div>
+
 								<div className="mt-8">
 									<input
 										type="submit"
-										className="text-sm font-semibold leading-none text-white focus:outline-none border rounded hover:bg-[#ff5722] bg-[#90ba14] py-4 w-full"
+										className={`text-sm font-semibold leading-none text-white focus:outline-none border rounded hover:bg-[#ff5722] bg-[#90ba14] py-4 w-full `}
 									/>
 								</div>
 							</form>

@@ -6,7 +6,7 @@ const Login = () => {
 	return (
 		<div className="">
 			<div className="pt-[12vh] bg-indigo-50 min-h-screen min-w-screen flex items-center justify-center">
-				<div className="xl:px-20 lg:px-10 sm:px-6 px-4 lg:py-12 py-9 ">
+				<div className="xl:px-20 lg:px-10 sm:px-6 px-4 lg:py-12 py-9 lg:w-1/3">
 					<div className="bg-white shadow-lg rounded  w-full lg:px-10 sm:px-6 sm:py-10 px-2 py-6">
 						<p
 							tabIndex={0}
@@ -21,12 +21,12 @@ const Login = () => {
 							Dont have account?
 							<Link
 								to={"/register"}
-								className="hover:text-gray-500 focus:text-gray-500 focus:outline-none focus:underline hover:underline text-sm font-medium leading-none text-gray-800 cursor-pointer"
+								className="hover:underline text-sm font-medium leading-none text-blue-700 cursor-pointer"
 							>
 								Sign up here
 							</Link>
 						</p>
-                        <SocialLogin></SocialLogin>
+						<SocialLogin></SocialLogin>
 						<form>
 							<div>
 								<label

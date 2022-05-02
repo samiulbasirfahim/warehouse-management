@@ -4,6 +4,7 @@ import { HiOutlineMenu, HiOutlineMenuAlt1 } from "react-icons/hi"
 import { useScrollTracker } from "react-scroll-tracker"
 import { useAuthState } from "react-firebase-hooks/auth"
 import auth from "../firebase.init"
+import { signOut } from "firebase/auth"
 
 const Header = () => {
 	const [user] = useAuthState(auth)
@@ -24,7 +25,7 @@ const Header = () => {
 			<header
 				className={`fixed w-full z-50 top-0  duration-500 md:px-8 xl:px-26 2xl:px-36 flex items-center justify-between ${
 					scrollY < 1000
-						? "min-h-[14vh] backdrop-blur-[0px] lg:text-black"
+						? "min-h-[14vh] backdrop-blur-[0px] text-white lg:text-black"
 						: "min-h-[8vh] backdrop-blur-[50px] text-white bg-black/60"
 				}`}
 			>
@@ -120,7 +121,10 @@ const Header = () => {
 									Login
 								</NavLink>
 							) : (
-								<button className="font-bold py-[8px] mx-0 px-[30px] border-l-2 text-[#ff5722]">
+								<button
+									onClick={() => signOut(auth)}
+									className="hover:text-[#90ba14] hover:bg-white hover:rounded-r-[15px] font-bold py-[8px] mx-0 px-[30px] bg-white lg:bg-transparent rounded-[15px] lg:rounded-none lg:border-l-2 text-[#ff5722]"
+								>
 									Sign out
 								</button>
 							)}

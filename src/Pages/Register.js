@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react"
 import SocialLogin from "../Components/SocialLogin"
 import { Link } from "react-router-dom"
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth"
+import auth from "../firebase.init"
+import toast from "react-hot-toast"
 
 const Register = () => {
 	const [showpass, setShowPass] = useState(false)
@@ -48,11 +51,13 @@ const Register = () => {
 	}, [userInfo])
 	const handleRegister = (event) => {
 		event.preventDefault()
-		const name = event.target.name.value
-		const email = event.target.email.value
-		const password = event.target.password.value
-		const confirmPassword = event.target.confirmPassword.value
-		console.log(name, email, password, confirmPassword)
+		createUserWithEmailAndPassword(auth, userInfo.email, userInfo.password)
+			.then(() =>
+				updateProfile(auth.currentUser, { displayName: userInfo.name })
+					.then(() => {})
+					.catch((error) => console.log(error))
+			)
+			.catch((error) => toast(error.code))
 	}
 	const handleUserInfo = (event) => {
 		setUserInfo({
@@ -64,7 +69,7 @@ const Register = () => {
 		<div>
 			<div className="">
 				<div className="pt-[12vh] bg-indigo-50 min-h-screen min-w-screen flex items-center justify-center">
-					<div className="xl:px-20 lg:px-10 sm:px-6 px-4 lg:py-12 py-9 lg:w-1/3 ">
+					<div className="xl:px-20 lg:px-10 sm:px-6 px-4 lg:py-12 py-9 lg:w-1/3">
 						<div className="bg-white shadow-lg rounded  w-full lg:px-10 sm:px-6 sm:py-10 px-2 py-6">
 							<p
 								tabIndex={0}

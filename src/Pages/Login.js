@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react"
 import { useAuthState } from "react-firebase-hooks/auth"
 import toast from "react-hot-toast"
 import { Link, useLocation, useNavigate } from "react-router-dom"
+import ReactHelmet from "../Components/ReactHelmet"
 import SocialLogin from "../Components/SocialLogin"
 import auth from "../firebase.init"
 import createJwtToken from "../Utils/Jwt"
@@ -18,7 +19,7 @@ const Login = () => {
 			navigate(from)
 		}
 	}, [user])
-	const [showpass, setShowPass] = useState(false)
+	const [showPass, setShowPass] = useState(false)
 	const [userInfo, setUserInfo] = useState({
 		email: "",
 		password: "",
@@ -55,6 +56,7 @@ const Login = () => {
 	}
 	return (
 		<div className="">
+			<ReactHelmet>Login</ReactHelmet>
 			<div className="pt-[12vh] bg-indigo-50 min-h-screen min-w-screen flex items-center justify-center">
 				<div className="xl:px-20 lg:px-10 sm:px-6 px-4 lg:py-12 py-9 lg:w-2/3 xl:1/3">
 					<div className="bg-white shadow-lg rounded  w-full lg:px-10 sm:px-6 sm:py-10 px-2 py-6">
@@ -91,6 +93,7 @@ const Login = () => {
 									name="email"
 									type="email"
 									className="bg-gray-200 border rounded text-xs font-medium text-gray-800 py-3 w-full pl-3 mt-2"
+									required
 								/>
 							</div>
 							<div className="mt-6 w-full">
@@ -107,11 +110,12 @@ const Login = () => {
 										}
 										name="password"
 										id="password"
-										type={showpass ? "text" : "password"}
+										type={showPass ? "text" : "password"}
 										className="bg-gray-200 border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
+										required
 									/>
 									<div
-										onClick={() => setShowPass(!showpass)}
+										onClick={() => setShowPass(!showPass)}
 										className="absolute right-0 mt-2 mr-3 cursor-pointer"
 									>
 										<div id="show">
@@ -131,6 +135,9 @@ const Login = () => {
 									</div>
 								</div>
 							</div>
+							<p className="cursor-pointer py-4 text-sm">
+								Reset password
+							</p>
 							<div className="mt-8">
 								<input
 									type="submit"

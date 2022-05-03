@@ -6,6 +6,7 @@ import auth from "../firebase.init"
 import toast from "react-hot-toast"
 import { useAuthState } from "react-firebase-hooks/auth"
 import createJwtToken from "../Utils/Jwt"
+import ReactHelmet from "../Components/ReactHelmet"
 
 const Register = () => {
 	const location = useLocation()
@@ -18,7 +19,7 @@ const Register = () => {
 			navigate(from)
 		}
 	}, [user])
-	const [showpass, setShowPass] = useState(false)
+	const [showPass, setShowPass] = useState(false)
 	const [errorName, setNameError] = useState("")
 	const [errorPassword, setPasswordError] = useState("")
 	const [errorConfirmPassword, setConfirmPasswordError] = useState("")
@@ -64,10 +65,6 @@ const Register = () => {
 	const handleRegister = (event) => {
 		event.preventDefault()
 		if (
-			userInfo.password !== "" &&
-			userInfo.confirmPassword !== "" &&
-			userInfo.email !== "" &&
-			userInfo.name !== "" &&
 			errorName === "" &&
 			errorPassword === "" &&
 			errorConfirmPassword === ""
@@ -103,6 +100,7 @@ const Register = () => {
 	}
 	return (
 		<div>
+			<ReactHelmet>Register</ReactHelmet>
 			<div className="">
 				<div className="pt-[12vh] bg-indigo-50 min-h-screen min-w-screen flex items-center justify-center">
 					<div className="xl:px-20 lg:px-10 sm:px-6 px-4 lg:py-12 py-9 lg:w-2/3 xl:1/3">
@@ -142,6 +140,7 @@ const Register = () => {
 										type="text"
 										name="name"
 										className="bg-gray-200 border rounded text-xs font-medium text-gray-800 py-3 w-full pl-3 mt-2"
+										required
 									/>
 									{userInfo.name !== "" && (
 										<p className="text-xs text-red-600">
@@ -164,6 +163,7 @@ const Register = () => {
 										type="email"
 										name="email"
 										className="bg-gray-200 border rounded text-xs font-medium text-gray-800 py-3 w-full pl-3 mt-2"
+										required
 									/>
 								</div>
 								<div className="mt-6 w-full">
@@ -181,13 +181,14 @@ const Register = () => {
 											id="password"
 											name="password"
 											type={
-												showpass ? "text" : "password"
+												showPass ? "text" : "password"
 											}
 											className="bg-gray-200 border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
+											required
 										/>
 										<div
 											onClick={() =>
-												setShowPass(!showpass)
+												setShowPass(!showPass)
 											}
 											className="absolute right-0 mt-2 mr-3 cursor-pointer"
 										>
@@ -228,13 +229,14 @@ const Register = () => {
 											name="confirmPassword"
 											id="confirmPassword"
 											type={
-												showpass ? "text" : "password"
+												showPass ? "text" : "password"
 											}
 											className="bg-gray-200 border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
+											required
 										/>
 										<div
 											onClick={() =>
-												setShowPass(!showpass)
+												setShowPass(!showPass)
 											}
 											className="absolute right-0 mt-2 mr-3 cursor-pointer"
 										>

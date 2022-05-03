@@ -15,7 +15,6 @@ const Login = () => {
 	useEffect(() => {
 		if (user) {
 			createJwtToken(user.email)
-			toast.success("Login successfully")
 			navigate(from, { replace: true })
 		}
 	}, [user])
@@ -37,19 +36,21 @@ const Login = () => {
 		const password = userInfo.password
 
 		if (userInfo.password !== "" && userInfo.email !== "") {
-			signInWithEmailAndPassword(auth, email, password).catch((error) => {
-				switch (error.code) {
-					case "auth/user-not-found":
-						toast.error("We cant find the user")
-						break
-					case "auth/wrong-password":
-						toast.error("Password is incorrect")
-						break
-					default:
-						toast.error("Something went wrong")
-						break
-				}
-			})
+			signInWithEmailAndPassword(auth, email, password)
+				.then(() => toast.success("Login successfully"))
+				.catch((error) => {
+					switch (error.code) {
+						case "auth/user-not-found":
+							toast.error("We cant find the user")
+							break
+						case "auth/wrong-password":
+							toast.error("Password is incorrect")
+							break
+						default:
+							toast.error("Something went wrong")
+							break
+					}
+				})
 		} else {
 			toast.error("Please fill this form sincerely")
 		}

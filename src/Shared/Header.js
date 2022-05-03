@@ -18,6 +18,7 @@ const Header = () => {
 		color: "#90ba14",
 		backgroundColor: "#fff",
 		borderRadius: "15px",
+		border: "0px",
 	}
 
 	return (
@@ -86,17 +87,7 @@ const Header = () => {
 							>
 								Inventory
 							</NavLink>
-							{/* <NavLink
-								style={({ isActive }) =>
-									isActive ? activeNavStyle : {}
-								}
-								className={
-									"   font-bold  py-[8px] mx-0  px-[30px] hover:text-[#90ba14]"
-								}
-								to={"/services"}
-							>
-								Services
-							</NavLink> */}
+
 							<NavLink
 								style={({ isActive }) =>
 									isActive ? activeNavStyle : {}
@@ -115,7 +106,7 @@ const Header = () => {
 									}
 									to="/login"
 									className={
-										"   font-bold  py-[8px] mx-0  px-[30px] hover:text-[#90ba14] "
+										" font-bold py-[8px] mx-0 px-[30px] lg:bg-transparent rounded-[15px] lg:rounded-none lg:border-l-2 hover:text-[#90ba14] text-[#ff5722]"
 									}
 								>
 									Login
@@ -123,7 +114,7 @@ const Header = () => {
 							) : (
 								<button
 									onClick={() => signOut(auth)}
-									className="hover:text-[#90ba14] hover:bg-white hover:rounded-r-[15px] font-bold py-[8px] mx-0 px-[30px] bg-white lg:bg-transparent rounded-[15px] lg:rounded-none lg:border-l-2 text-[#ff5722]"
+									className="hover:text-[#90ba14] hover:bg-white hover:rounded-r-[15px] hover:border-0 font-bold py-[8px] mx-0 px-[30px] bg-white lg:bg-transparent rounded-[15px] lg:rounded-none lg:border-l-2 text-[#ff5722]"
 								>
 									Sign out
 								</button>

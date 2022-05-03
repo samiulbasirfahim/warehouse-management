@@ -1,11 +1,23 @@
 import React, { useEffect, useState } from "react"
 import SocialLogin from "../Components/SocialLogin"
-import { Link } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth"
 import auth from "../firebase.init"
 import toast from "react-hot-toast"
+import { useAuthState } from "react-firebase-hooks/auth"
+import createJwtToken from "../Utils/Jwt"
 
 const Register = () => {
+	const location = useLocation()
+	const [user] = useAuthState(auth)
+	const navigate = useNavigate()
+	const from = location?.state?.from || "/"
+	useEffect(() => {
+		if (user) {
+			createJwtToken(user.email)
+			navigate(from)
+		}
+	}, [user])
 	const [showpass, setShowPass] = useState(false)
 	const [errorName, setNameError] = useState("")
 	const [errorPassword, setPasswordError] = useState("")
@@ -69,7 +81,7 @@ const Register = () => {
 		<div>
 			<div className="">
 				<div className="pt-[12vh] bg-indigo-50 min-h-screen min-w-screen flex items-center justify-center">
-					<div className="xl:px-20 lg:px-10 sm:px-6 px-4 lg:py-12 py-9 lg:w-1/3">
+					<div className="xl:px-20 lg:px-10 sm:px-6 px-4 lg:py-12 py-9 lg:w-2/3 xl:1/3">
 						<div className="bg-white shadow-lg rounded  w-full lg:px-10 sm:px-6 sm:py-10 px-2 py-6">
 							<p
 								tabIndex={0}

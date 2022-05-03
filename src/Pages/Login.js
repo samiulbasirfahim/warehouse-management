@@ -1,12 +1,57 @@
-import React, { useState } from "react"
-import { Link } from "react-router-dom"
+import { signInWithEmailAndPassword } from "firebase/auth"
+import React, { useEffect, useState } from "react"
+import { useAuthState } from "react-firebase-hooks/auth"
+import toast from "react-hot-toast"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import SocialLogin from "../Components/SocialLogin"
+import auth from "../firebase.init"
+import createJwtToken from "../Utils/Jwt"
 const Login = () => {
+	const location = useLocation()
+	const [user] = useAuthState(auth)
+	const navigate = useNavigate()
+	const from = location?.state?.from || "/"
+	useEffect(() => {
+		if (user) {
+			createJwtToken(user.email)
+			toast.success("Login successfully")
+			navigate(from)
+		}
+	}, [user])
 	const [showpass, setShowPass] = useState(false)
+	const [userInfo, setUserInfo] = useState({
+		email: "",
+		password: "",
+	})
+	const handleUserInfo = (event) => {
+		setUserInfo({
+			...userInfo,
+			[event.target.name]: event.target.value,
+		})
+	}
+
+	const handleLogin = (event) => {
+		event.preventDefault()
+		const email = userInfo.email
+		const password = userInfo.password
+		signInWithEmailAndPassword(auth, email, password).catch((error) => {
+			switch (error.code) {
+				case "auth/user-not-found":
+					toast.error("We cant find the user")
+					break
+				case "auth/wrong-password":
+					toast.error("Password is incorrect")
+					break
+				default:
+					toast.error("Something went wrong")
+					break
+			}
+		})
+	}
 	return (
 		<div className="">
 			<div className="pt-[12vh] bg-indigo-50 min-h-screen min-w-screen flex items-center justify-center">
-				<div className="xl:px-20 lg:px-10 sm:px-6 px-4 lg:py-12 py-9 lg:w-1/3">
+				<div className="xl:px-20 lg:px-10 sm:px-6 px-4 lg:py-12 py-9 lg:w-2/3 xl:1/3">
 					<div className="bg-white shadow-lg rounded  w-full lg:px-10 sm:px-6 sm:py-10 px-2 py-6">
 						<p
 							tabIndex={0}
@@ -27,7 +72,7 @@ const Login = () => {
 							</Link>
 						</p>
 						<SocialLogin></SocialLogin>
-						<form>
+						<form onSubmit={handleLogin}>
 							<div>
 								<label
 									htmlFor="email"
@@ -36,21 +81,27 @@ const Login = () => {
 									Email
 								</label>
 								<input
+									onChange={(event) => handleUserInfo(event)}
 									id="email"
+									name="email"
 									type="email"
 									className="bg-gray-200 border rounded text-xs font-medium text-gray-800 py-3 w-full pl-3 mt-2"
 								/>
 							</div>
 							<div className="mt-6 w-full">
 								<label
-									htmlFor="myInput"
+									htmlFor="password"
 									className="text-sm font-medium leading-none text-gray-800"
 								>
 									Password
 								</label>
 								<div className="relative flex items-center justify-center">
 									<input
-										id="myInput"
+										onChange={(event) =>
+											handleUserInfo(event)
+										}
+										name="password"
+										id="password"
 										type={showpass ? "text" : "password"}
 										className="bg-gray-200 border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
 									/>

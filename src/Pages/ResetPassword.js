@@ -29,7 +29,7 @@ const ResetPassword = () => {
 	return (
 		<div className="">
 			<ReactHelmet>Reset password</ReactHelmet>
-			<div className="pt-[12vh] bg-indigo-50 min-h-screen min-w-screen flex items-center justify-center">
+			<div className="pt-[12vh] bg-white min-h-screen min-w-screen flex items-center justify-center">
 				<div className="xl:px-20 lg:px-10 sm:px-6 px-4 lg:py-12 py-9 lg:w-2/3 xl:1/3">
 					<div className="bg-white shadow-lg rounded  w-full lg:px-10 sm:px-6 sm:py-10 px-2 py-6">
 						<p

@@ -15,7 +15,7 @@ const VerifyEmail = () => {
 			.catch((err) => toast.error("Try again letters "))
 	}
 	return (
-		<div className="bg-indigo-50  flex justify-center items-center  min-h-screen min-w-screen">
+		<div className="bg-white  flex justify-center items-center  min-h-screen min-w-screen">
 			<ReactHelmet>Verify email</ReactHelmet>
 			<div className="bg-white lg:w-1/3 w-10/12 rounded shadow-2xl p-6">
 				<div className="border-t-0 border-l-0 border-r-0 border-b-[#90ba14] border-2 pt-14 mb-8 pb-4">

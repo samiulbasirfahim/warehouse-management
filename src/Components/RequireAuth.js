@@ -10,7 +10,7 @@ const RequireAuth = ({ children }) => {
 	const location = useLocation()
 	if (loading) {
 		return (
-			<div className="h-screen bg-indigo-50  w-screen flex items-center justify-center">
+			<div className="h-screen bg-white  w-screen flex items-center justify-center">
 				<PropagateLoader speedMultiplier={6}></PropagateLoader>
 			</div>
 		)

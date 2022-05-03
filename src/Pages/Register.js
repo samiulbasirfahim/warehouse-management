@@ -63,13 +63,37 @@ const Register = () => {
 	}, [userInfo])
 	const handleRegister = (event) => {
 		event.preventDefault()
-		createUserWithEmailAndPassword(auth, userInfo.email, userInfo.password)
-			.then(() =>
-				updateProfile(auth.currentUser, { displayName: userInfo.name })
-					.then(() => {})
-					.catch((error) => console.log(error))
+		if (
+			userInfo.password !== "" &&
+			userInfo.confirmPassword !== "" &&
+			userInfo.email !== "" &&
+			userInfo.name !== "" &&
+			errorName === "" &&
+			errorPassword === "" &&
+			errorConfirmPassword === ""
+		) {
+			createUserWithEmailAndPassword(
+				auth,
+				userInfo.email,
+				userInfo.password
 			)
-			.catch((error) => toast(error.code))
+				.then(() =>
+					updateProfile(auth.currentUser, {
+						displayName: userInfo.name,
+					}).catch((error) => toast.error("something went wrong"))
+				)
+				.catch((error) => {
+					switch (error.code) {
+						case "auth/email-already-in-use":
+							toast.error("Email already in use")
+							break
+						default:
+							toast.error("Something went wrong")
+					}
+				})
+		} else {
+			toast.error("May be you'r form isn't valid")
+		}
 	}
 	const handleUserInfo = (event) => {
 		setUserInfo({

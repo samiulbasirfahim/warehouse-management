@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import SocialLogin from "../Components/SocialLogin"
 import { Link, useLocation, useNavigate } from "react-router-dom"
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth"
+import { createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from "firebase/auth"
 import auth from "../firebase.init"
 import toast from "react-hot-toast"
 import { useAuthState } from "react-firebase-hooks/auth"
@@ -77,7 +77,10 @@ const Register = () => {
 				.then(() =>
 					updateProfile(auth.currentUser, {
 						displayName: userInfo.name,
-					}).catch((error) => toast.error("something went wrong"))
+					}).then(() => {
+						sendEmailVerification(auth.currentUser).then(() => toast('Check your email for verification mail'))
+					})
+					.catch((error) => toast.error("something went wrong"))
 				)
 				.catch((error) => {
 					switch (error.code) {

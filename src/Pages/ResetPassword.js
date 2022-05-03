@@ -8,6 +8,7 @@ import auth from "../firebase.init"
 const ResetPassword = () => {
 	const location = useLocation()
 	const from = location?.state?.from || "/"
+	const loginEmail = location.state?.email
 	const [email, setEmail] = useState("")
 	const handleSubmit = (event) => {
 		event.preventDefault()
@@ -31,7 +32,7 @@ const ResetPassword = () => {
 			<ReactHelmet>Reset password</ReactHelmet>
 			<div className="pt-[12vh] bg-white min-h-screen min-w-screen flex items-center justify-center">
 				<div className="xl:px-20 lg:px-10 sm:px-6 px-4 lg:py-12 py-9 lg:w-2/3 xl:1/3">
-					<div className="bg-white shadow-lg rounded  w-full lg:px-10 sm:px-6 sm:py-10 px-2 py-6">
+					<div className="bg-slate-100 shadow-lg rounded  w-full lg:px-10 sm:px-6 sm:py-10 px-2 py-6">
 						<p
 							tabIndex={0}
 							className="focus:outline-none text-2xl font-extrabold leading-6 my-4 text-gray-800"
@@ -54,6 +55,7 @@ const ResetPassword = () => {
 									id="email"
 									name="email"
 									type="email"
+									defaultValue={loginEmail}
 									className="bg-gray-200 border rounded text-xs font-medium text-gray-800 py-3 w-full pl-3 mt-2"
 									required
 								/>
@@ -67,7 +69,6 @@ const ResetPassword = () => {
 									Already have a account ?
 									<Link
 										state={{ from: from }}
-										replace
 										to={"/login"}
 										className="hover:underline text-xs lg:text-sm ml-4 font-medium leading-none text-blue-700 cursor-pointer"
 									>
@@ -81,7 +82,7 @@ const ResetPassword = () => {
 									Dont have account?
 									<Link
 										state={{ from: from }}
-										replace
+										
 										to={"/register"}
 										className="hover:underline text-xs lg:text-sm ml-4 font-medium leading-none text-blue-700 cursor-pointer"
 									>

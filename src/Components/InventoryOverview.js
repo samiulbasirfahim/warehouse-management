@@ -6,7 +6,7 @@ const InventoryOverview = () => {
 	return (
 		<div>
 			<div className="bg-white rounded w-4/5 mx-auto">
-				<p className="text-4xl lg:py-12 text-center font-bold font-mono">
+				<p className="text-4xl lg:py-28 text-center font-bold font-mono">
 					🚗Inventory🚗
 				</p>
 			</div>

@@ -2,7 +2,7 @@ import React from 'react';
 
 const CarSmall = () => {
     return (
-        <div>
+        <div className='bg-slate-300'>
             
         </div>
     );

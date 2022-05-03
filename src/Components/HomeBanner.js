@@ -19,7 +19,7 @@ const HomeBanner = () => {
 	return (
 		<div
 			className="text-4xl w-full min-h-full
-		bg-blend-overlay bg-fixed bg-center bg-no-repeat bg-cover  bg-[url('https://i.ibb.co/JsyDd3T/raphael-schaller-o-Xq5-Hbf-c-g-unsplash.jpg')]"
+		bg-blend-overlay bg-fixed bg-center bg-no-repeat bg-cover bg-[url('https://i.ibb.co/JsyDd3T/raphael-schaller-o-Xq5-Hbf-c-g-unsplash.jpg')]"
 		>
 			<ScrollContainer>
 				<ScrollPage page={0}>

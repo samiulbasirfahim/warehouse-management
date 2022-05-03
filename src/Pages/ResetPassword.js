@@ -1,8 +1,29 @@
-import React from "react"
+import { sendPasswordResetEmail } from "firebase/auth"
+import React, { useState } from "react"
+import toast from "react-hot-toast"
 import { Link } from "react-router-dom"
 import ReactHelmet from "../Components/ReactHelmet"
+import auth from "../firebase.init"
 
 const ResetPassword = () => {
+	const [email, setEmail] = useState("")
+	const handleSubmit = (event) => {
+		event.preventDefault()
+		sendPasswordResetEmail(auth, email)
+			.then(() => {
+				toast.success("Password reset email sent successfully")
+			})
+			.catch((error) => {
+				switch (error.code) {
+					case "auth/user-not-found":
+						toast.error("User not found")
+						break
+					default:
+						toast.error("Something went wrong")
+						break
+				}
+			})
+	}
 	return (
 		<div className="">
 			<ReactHelmet>Reset password</ReactHelmet>
@@ -16,7 +37,7 @@ const ResetPassword = () => {
 							Login to your account
 						</p>
 
-						<form>
+						<form onSubmit={handleSubmit}>
 							<div>
 								<label
 									htmlFor="email"
@@ -25,7 +46,9 @@ const ResetPassword = () => {
 									Email
 								</label>
 								<input
-									// onChange={(event) => handleUserInfo(event)}
+									onChange={(event) =>
+										setEmail(event.target.value)
+									}
 									id="email"
 									name="email"
 									type="email"
@@ -62,7 +85,7 @@ const ResetPassword = () => {
 							</div>
 							<div className="mt-8">
 								<input
-                                    value={'Reset Password'}
+									value={"Reset Password"}
 									type="submit"
 									className="text-sm font-semibold leading-none text-white focus:outline-none border rounded hover:bg-[#ff5722] bg-[#90ba14] py-4 w-full"
 								/>

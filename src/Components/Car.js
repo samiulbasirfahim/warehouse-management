@@ -48,7 +48,7 @@ const Car = () => {
 					<span className="ml-4">$_{price}</span>
 				</p>
 				<button
-					onClick={() => navigate("/update/" + _id)}
+					onClick={() => navigate("/review/" + _id)}
 					className="hover:bg-[#ff5722] hover:text-[#90ba14] py-3 mt-4 w-full lg:w-1/2 rounded text-white font-bold font-mono font-xl bg-[#90ba14]"
 				>
 					Review

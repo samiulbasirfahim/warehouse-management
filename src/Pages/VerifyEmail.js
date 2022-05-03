@@ -1,4 +1,3 @@
-import userEvent from "@testing-library/user-event"
 import { sendEmailVerification } from "firebase/auth"
 import React from "react"
 import { useAuthState } from "react-firebase-hooks/auth"
@@ -39,9 +38,9 @@ const VerifyEmail = () => {
 						onClick={handleEmailVerification}
 						className="text-center py-2 mt-8 bg-[#90ba14] rounded-xl px-4 lg:px-8"
 					>
-						Send email verification mail again
+						Send verification mail again
 					</button>
-					<p className='text-xs text-gray-600'>if you cant find verification email check spam or junk folder</p>
+					<p className='text-xs text-center my-4 text-gray-600'>if you cant find verification email check spam or junk folder</p>
 				</div>
 			</div>
 		</div>

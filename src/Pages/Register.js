@@ -92,7 +92,7 @@ const Register = () => {
 					}
 				})
 		} else {
-			toast.error("May be you'r form isn't valid")
+			toast.error("Please fill this form sincerely")
 		}
 	}
 	const handleUserInfo = (event) => {

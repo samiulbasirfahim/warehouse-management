@@ -34,19 +34,24 @@ const Login = () => {
 		event.preventDefault()
 		const email = userInfo.email
 		const password = userInfo.password
-		signInWithEmailAndPassword(auth, email, password).catch((error) => {
-			switch (error.code) {
-				case "auth/user-not-found":
-					toast.error("We cant find the user")
-					break
-				case "auth/wrong-password":
-					toast.error("Password is incorrect")
-					break
-				default:
-					toast.error("Something went wrong")
-					break
-			}
-		})
+
+		if (userInfo.password !== "" && userInfo.email !== "") {
+			signInWithEmailAndPassword(auth, email, password).catch((error) => {
+				switch (error.code) {
+					case "auth/user-not-found":
+						toast.error("We cant find the user")
+						break
+					case "auth/wrong-password":
+						toast.error("Password is incorrect")
+						break
+					default:
+						toast.error("Something went wrong")
+						break
+				}
+			})
+		} else {
+			toast.error("Please fill this form sincerely")
+		}
 	}
 	return (
 		<div className="">

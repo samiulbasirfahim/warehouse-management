@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react"
 import SocialLogin from "../Components/SocialLogin"
 import { Link, useLocation, useNavigate } from "react-router-dom"
-import { createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from "firebase/auth"
+import {
+	createUserWithEmailAndPassword,
+	sendEmailVerification,
+	updateProfile,
+} from "firebase/auth"
 import auth from "../firebase.init"
 import toast from "react-hot-toast"
 import { useAuthState } from "react-firebase-hooks/auth"
@@ -77,10 +81,13 @@ const Register = () => {
 				.then(() =>
 					updateProfile(auth.currentUser, {
 						displayName: userInfo.name,
-					}).then(() => {
-						sendEmailVerification(auth.currentUser).then(() => toast('Check your email for verification mail'))
 					})
-					.catch((error) => toast.error("something went wrong"))
+						.then(() => {
+							sendEmailVerification(auth.currentUser).then(() =>
+								toast("Check your email for verification mail")
+							)
+						})
+						.catch((error) => toast.error("something went wrong"))
 				)
 				.catch((error) => {
 					switch (error.code) {
@@ -261,6 +268,8 @@ const Register = () => {
 									>
 										Already have a account ?
 										<Link
+											state={{ from: from }}
+											replace
 											to={"/login"}
 											className="hover:underline text-xs lg:text-sm ml-4 font-medium leading-none text-blue-700 cursor-pointer"
 										>
@@ -270,7 +279,7 @@ const Register = () => {
 								</div>
 								<div className="mt-8">
 									<input
-										value={'Register'}
+										value={"Register"}
 										type="submit"
 										className={`text-sm font-semibold leading-none text-white focus:outline-none border rounded hover:bg-[#ff5722] bg-[#90ba14] py-4 w-full `}
 									/>

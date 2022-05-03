@@ -16,7 +16,7 @@ const Login = () => {
 		if (user) {
 			createJwtToken(user.email)
 			toast.success("Login successfully")
-			navigate(from)
+			navigate(from, { replace: true })
 		}
 	}, [user])
 	const [showPass, setShowPass] = useState(false)
@@ -128,6 +128,8 @@ const Login = () => {
 								<p className="text-xs lg:text-sm mt-4 font-medium leading-none text-gray-500">
 									Forget your password ?
 									<Link
+										state={{ from: from }}
+										replace
 										to="/reset-password"
 										className="hover:underline text-xs lg:text-sm ml-4 font-medium leading-none text-red-700 cursor-pointer"
 									>
@@ -140,6 +142,8 @@ const Login = () => {
 								>
 									Dont have account?
 									<Link
+										state={{ from: from }}
+										replace
 										to={"/register"}
 										className="hover:underline text-xs lg:text-sm ml-4 font-medium leading-none text-blue-700 cursor-pointer"
 									>

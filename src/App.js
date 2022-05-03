@@ -1,7 +1,9 @@
 import { Toaster } from "react-hot-toast"
 import { Route, Routes } from "react-router-dom"
+import RequireAuth from "./Components/RequireAuth"
 import useDarkMode from "./Hooks/useDarkMode"
 import Home from "./Pages/Home"
+import Inventory from "./Pages/Inventory"
 import Login from "./Pages/Login"
 import Register from "./Pages/Register"
 import ResetPassword from "./Pages/ResetPassword"
@@ -21,6 +23,11 @@ function App() {
 					<Route path="/login" element={<Login></Login>}></Route>
 					<Route path="/register" element={<Register></Register>}></Route>
 					<Route path='/reset-password' element={<ResetPassword></ResetPassword>}></Route>
+					<Route path="/inventory" element={
+						<RequireAuth>
+							<Inventory></Inventory>
+						</RequireAuth>
+					}></Route>
 				</Routes>
 			</div>
 			<Toaster />

@@ -1,11 +1,13 @@
 import { sendPasswordResetEmail } from "firebase/auth"
 import React, { useState } from "react"
 import toast from "react-hot-toast"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import ReactHelmet from "../Components/ReactHelmet"
 import auth from "../firebase.init"
 
 const ResetPassword = () => {
+	const location = useLocation()
+	const from = location?.state?.from || "/"
 	const [email, setEmail] = useState("")
 	const handleSubmit = (event) => {
 		event.preventDefault()
@@ -64,6 +66,8 @@ const ResetPassword = () => {
 								>
 									Already have a account ?
 									<Link
+										state={{ from: from }}
+										replace
 										to={"/login"}
 										className="hover:underline text-xs lg:text-sm ml-4 font-medium leading-none text-blue-700 cursor-pointer"
 									>
@@ -76,6 +80,8 @@ const ResetPassword = () => {
 								>
 									Dont have account?
 									<Link
+										state={{ from: from }}
+										replace
 										to={"/register"}
 										className="hover:underline text-xs lg:text-sm ml-4 font-medium leading-none text-blue-700 cursor-pointer"
 									>

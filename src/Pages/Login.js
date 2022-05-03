@@ -66,18 +66,7 @@ const Login = () => {
 						>
 							Login to your account
 						</p>
-						<p
-							tabIndex={0}
-							className="focus:outline-none text-sm mt-4 font-medium leading-none text-gray-500"
-						>
-							Dont have account?
-							<Link
-								to={"/register"}
-								className="hover:underline text-sm font-medium leading-none text-blue-700 cursor-pointer"
-							>
-								Sign up here
-							</Link>
-						</p>
+
 						<SocialLogin></SocialLogin>
 						<form onSubmit={handleLogin}>
 							<div>
@@ -135,11 +124,32 @@ const Login = () => {
 									</div>
 								</div>
 							</div>
-							<p className="cursor-pointer py-4 text-sm">
-								Reset password
-							</p>
+							<div className="flex flex-col lg:flex-row justify-between">
+								<p className="text-xs lg:text-sm mt-4 font-medium leading-none text-gray-500">
+									Forget your password ?
+									<Link
+										to="/reset-password"
+										className="hover:underline text-xs lg:text-sm ml-4 font-medium leading-none text-red-700 cursor-pointer"
+									>
+										Reset password
+									</Link>
+								</p>
+								<p
+									tabIndex={0}
+									className="text-xs lg:text-sm mt-4 font-medium leading-none text-gray-500"
+								>
+									Dont have account?
+									<Link
+										to={"/register"}
+										className="hover:underline text-xs lg:text-sm ml-4 font-medium leading-none text-blue-700 cursor-pointer"
+									>
+										Sign up here
+									</Link>
+								</p>
+							</div>
 							<div className="mt-8">
 								<input
+									value="Login"
 									type="submit"
 									className="text-sm font-semibold leading-none text-white focus:outline-none border rounded hover:bg-[#ff5722] bg-[#90ba14] py-4 w-full"
 								/>

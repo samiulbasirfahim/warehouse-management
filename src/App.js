@@ -4,6 +4,7 @@ import useDarkMode from "./Hooks/useDarkMode"
 import Home from "./Pages/Home"
 import Login from "./Pages/Login"
 import Register from "./Pages/Register"
+import ResetPassword from "./Pages/ResetPassword"
 import Header from "./Shared/Header"
 
 function App() {
@@ -18,10 +19,8 @@ function App() {
 				<Routes>
 					<Route path="/" element={<Home></Home>}></Route>
 					<Route path="/login" element={<Login></Login>}></Route>
-					<Route
-						path="/register"
-						element={<Register></Register>}
-					></Route>
+					<Route path="/register" element={<Register></Register>}></Route>
+					<Route path='/reset-password' element={<ResetPassword></ResetPassword>}></Route>
 				</Routes>
 			</div>
 			<Toaster />

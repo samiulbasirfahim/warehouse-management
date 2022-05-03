@@ -4,13 +4,13 @@ import { ImGithub, ImGoogle } from "react-icons/im"
 const SocialLogin = () => {
 	return (
 		<div>
-			<button className="p-3 border rounded-lg border-gray-700 flex items-center w-full mt-10 hover:bg-gray-100">
+			<button className="p-3 border justify-center rounded-lg border-gray-700 flex items-center w-full mt-10 hover:bg-gray-100">
 				<ImGoogle />
 				<p className="text-base font-medium ml-4 text-gray-700">
 					Continue with Google
 				</p>
 			</button>
-			<button className="p-3 border rounded-lg border-gray-700 flex items-center w-full mt-4 hover:bg-gray-100">
+			<button className="p-3 border justify-center rounded-lg border-gray-700 flex items-center w-full mt-4 hover:bg-gray-100">
 				<ImGithub />
 				<p className="text-base font-medium ml-4 text-gray-700">
 					Continue with GitHub

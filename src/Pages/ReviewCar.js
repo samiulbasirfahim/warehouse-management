@@ -24,10 +24,10 @@ const ReviewCar = () => {
 			</div>
 		)
 	}
+	const jwtToken = JSON.parse(
+		window.localStorage.getItem("authorization-token")
+	)
 	const handleDelivere = () => {
-		const jwtToken = JSON.parse(
-			window.localStorage.getItem("authorization-token")
-		)
 		fetch("https://quiet-mesa-05314.herokuapp.com/delivered/" + car._id, {
 			headers: {
 				"content-type": "application/json",
@@ -36,14 +36,33 @@ const ReviewCar = () => {
 			},
 		})
 			.then((res) => res.json())
-			.then((data) => {console.log(data)
-			if(data.modifiedCount >0 ){
-				setCar({...car, stock: +car?.stock - 1})
-			} else if(data.delete === 'deleted'){
-				navigate(from)
-			}
-		
+			.then((data) => {
+				console.log(data)
+				if (data.modifiedCount > 0) {
+					setCar({ ...car, stock: +car?.stock - 1 })
+				} else if (data.delete === "deleted") {
+					navigate(from)
+				}
+			})
+	}
+	const handleAddStock = (event) => {
+		event.preventDefault()
+		const stock = +event.target.stock.value
+		fetch("http://localhost:4000/add-car-stock/" + car._id, {
+			headers: {
+				"content-type": "application/json",
+				Authorization: `Bearer ${jwtToken}`,
+				email: user?.email,
+			},
+			body: JSON.stringify({ stock: stock }),
+			method: "POST",
 		})
+			.then((res) => res.json())
+			.then((data) => {
+				if(data.modifiedCount > 0){
+					setCar({...car, stock: +car.stock + stock})
+				}
+			})
 	}
 	const title = car?.title
 	return (
@@ -97,16 +116,19 @@ const ReviewCar = () => {
 								Delivered
 							</button>
 						</div>
-						<form className=" mt-6 py-2 px-6 rounded-lg bg-slate-100 grid">
+						<form
+							className=" mt-6 py-2 px-6 rounded-lg bg-slate-100 grid"
+							onSubmit={handleAddStock}
+						>
 							<label
-								htmlFor="addItem"
+								htmlFor="stock"
 								className="my-2 font-semibold"
 							>
 								Add more on stock
 							</label>
 							<input
 								type="number"
-								name="addItem"
+								name="stock"
 								min={0}
 								className="h-10  rounded"
 								id="addItem"

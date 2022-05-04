@@ -11,18 +11,18 @@ const ReviewCar = () => {
 			.then((res) => res.json())
 			.then((data) => setCar(data))
 	}, [])
-	if (car === {}) {
+	if (!car) {
 		return (
 			<div className="h-screen bg-white  w-screen flex items-center justify-center">
 				<PropagateLoader speedMultiplier={6}></PropagateLoader>
 			</div>
 		)
 	}
-	console.log(car)
-
+	const title = car?.title
+	console.log(title);
 	return (
 		<div className="min-h-screen flex items-center justify-between lg:px-8 xl:px-26 2xl:px-36 overflow-x-hidden">
-			<ReactHelmet>Review</ReactHelmet>
+			<ReactHelmet>{title}</ReactHelmet>
 			<div className="lg:flex items-center justify-center py-12 2xl:px-20 lg:px-6 px-2">
 				<div className="xl:w-2/6 lg:w-2/5 w-80 lg:block hidden">
 					<img className="w-full" alt="" src={car?.imgLink} />

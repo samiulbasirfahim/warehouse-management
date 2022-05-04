@@ -70,34 +70,60 @@ const Header = () => {
 									isActive ? activeNavStyle : {}
 								}
 								className={
-									"   font-bold  py-[8px] ml-0 px-[30px] hover:text-[#90ba14]"
+									" font-bold  py-[8px]  mx-0 px-[30px] hover:text-[#90ba14]"
 								}
 								to={"/"}
 							>
 								Home
 							</NavLink>
-							<NavLink
-								style={({ isActive }) =>
-									isActive ? activeNavStyle : {}
-								}
-								className={
-									"   font-bold  py-[8px] mx-0  px-[30px] hover:text-[#90ba14]"
-								}
-								to={"/inventory"}
-							>
-								Inventory
-							</NavLink>
+							{user && (
+								<>
+									<NavLink
+										style={({ isActive }) =>
+											isActive ? activeNavStyle : {}
+										}
+										className={
+											"   font-bold  py-[8px] ml-0 px-[30px] hover:text-[#90ba14]"
+										}
+										to={"/inventor"}
+									>
+										Manage cars
+									</NavLink>
+									<NavLink
+										style={({ isActive }) =>
+											isActive ? activeNavStyle : {}
+										}
+										className={
+											"   font-bold  py-[8px] mx-0  px-[30px] hover:text-[#90ba14]"
+										}
+										to={"/add-car"}
+									>
+										Add car
+									</NavLink>
 
+									<NavLink
+										style={({ isActive }) =>
+											isActive ? activeNavStyle : {}
+										}
+										className={
+											" font-bold  py-[8px]  mx-0 px-[30px] hover:text-[#90ba14]"
+										}
+										to={"/my-car"}
+									>
+										My cars
+									</NavLink>
+								</>
+							)}
 							<NavLink
 								style={({ isActive }) =>
 									isActive ? activeNavStyle : {}
 								}
 								className={
-									"   font-bold  py-[8px]  mx-0 px-[30px] hover:text-[#90ba14]"
+									" font-bold  py-[8px]  mx-0 px-[30px] hover:text-[#90ba14]"
 								}
-								to={"/about"}
+								to={"/blog"}
 							>
-								About
+								Blog
 							</NavLink>
 							{!user ? (
 								<NavLink

@@ -1,5 +1,5 @@
 const createJwtToken = (email) => {
-	fetch("http://localhost:5000/create-jwt-token", {
+	fetch("https://quiet-mesa-05314.herokuapp.com/create-jwt-token", {
 		headers: {
 			"Content-Type": "application/json",
 		},

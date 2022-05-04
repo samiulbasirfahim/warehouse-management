@@ -1,3 +1,4 @@
+import { signOut } from "firebase/auth"
 import React, { useState } from "react"
 import { useAuthState } from "react-firebase-hooks/auth"
 import toast from "react-hot-toast"
@@ -40,7 +41,13 @@ const AddProduct = () => {
 			method: "POST",
 			body: JSON.stringify(carInfo),
 		})
-			.then((res) => res.json())
+			.then((res) => {
+				if (res.status === 401 || res.status === 403) {
+					signOut(auth)
+					navigate("/login")
+				}
+				return res.json()
+			})
 			.then((data) => {
 				if (data?.insertedId) {
 					navigate(from)

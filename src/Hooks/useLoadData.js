@@ -1,9 +1,12 @@
+import { signOut } from "firebase/auth"
 import { useEffect, useState } from "react"
 import { useAuthState } from "react-firebase-hooks/auth"
+import { useNavigate } from "react-router-dom"
 import auth from "../firebase.init"
 
 const useLoadData = (url) => {
 	const [user] = useAuthState(auth)
+	const navigate = useNavigate()
 	const email = user?.email
 	const [cars, setCars] = useState([])
 	const jwtToken = JSON.parse(
@@ -18,7 +21,13 @@ const useLoadData = (url) => {
 				email: email,
 			},
 		})
-			.then((res) => res.json())
+			.then((res) => {
+				if (res.status === 401 || res.status === 403) {
+					signOut(auth)
+					navigate("/login")
+				}
+				return res.json()
+			})
 			.then((data) => setCars(data))
 	}, [])
 	return { cars, setCars }

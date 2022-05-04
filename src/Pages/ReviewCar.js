@@ -1,3 +1,4 @@
+import { signOut } from "firebase/auth"
 import React, { useEffect, useState } from "react"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { useLocation, useNavigate, useParams } from "react-router-dom"
@@ -35,7 +36,13 @@ const ReviewCar = () => {
 				email: user?.email,
 			},
 		})
-			.then((res) => res.json())
+			.then((res) => {
+				if (res.status === 401 || res.status === 403) {
+					signOut(auth)
+					navigate("/login")
+				}
+				return res.json()
+			})
 			.then((data) => {
 				console.log(data)
 				if (data.modifiedCount > 0) {
@@ -48,19 +55,28 @@ const ReviewCar = () => {
 	const handleAddStock = (event) => {
 		event.preventDefault()
 		const stock = +event.target.stock.value
-		fetch("https://quiet-mesa-05314.herokuapp.com/add-car-stock/" + car._id, {
-			headers: {
-				"content-type": "application/json",
-				Authorization: `Bearer ${jwtToken}`,
-				email: user?.email,
-			},
-			body: JSON.stringify({ stock: stock }),
-			method: "POST",
-		})
-			.then((res) => res.json())
+		fetch(
+			"https://quiet-mesa-05314.herokuapp.com/add-car-stock/" + car._id,
+			{
+				headers: {
+					"content-type": "application/json",
+					Authorization: `Bearer ${jwtToken}`,
+					email: user?.email,
+				},
+				body: JSON.stringify({ stock: stock }),
+				method: "POST",
+			}
+		)
+			.then((res) => {
+				if (res.status === 401 || res.status === 403) {
+					signOut(auth)
+					navigate("/login")
+				}
+				return res.json()
+			})
 			.then((data) => {
-				if(data.modifiedCount > 0){
-					setCar({...car, stock: +car.stock + stock})
+				if (data.modifiedCount > 0) {
+					setCar({ ...car, stock: +car.stock + stock })
 				}
 			})
 	}

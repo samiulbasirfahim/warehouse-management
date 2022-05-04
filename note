@@ -7,7 +7,7 @@ const ReviewCar = () => {
 	const { carId } = useParams({})
 	const [car, setCar] = useState()
 	useEffect(() => {
-		fetch("http://localhost:4000/car/" + carId)
+		fetch("https://quiet-mesa-05314.herokuapp.com/car/" + carId)
 			.then((res) => res.json())
 			.then((data) => setCar(data))
 	}, [])

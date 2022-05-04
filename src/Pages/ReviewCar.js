@@ -13,7 +13,7 @@ const ReviewCar = () => {
 	const [user] = useAuthState(auth)
 	const [car, setCar] = useState()
 	useEffect(() => {
-		fetch("http://localhost:4000/car/" + carId)
+		fetch("https://quiet-mesa-05314.herokuapp.com/car/" + carId)
 			.then((res) => res.json())
 			.then((data) => setCar(data))
 	}, [])
@@ -28,7 +28,7 @@ const ReviewCar = () => {
 		const jwtToken = JSON.parse(
 			window.localStorage.getItem("authorization-token")
 		)
-		fetch("http://localhost:4000/delivered/" + car._id, {
+		fetch("https://quiet-mesa-05314.herokuapp.com/delivered/" + car._id, {
 			headers: {
 				"content-type": "application/json",
 				Authorization: `Bearer ${jwtToken}`,

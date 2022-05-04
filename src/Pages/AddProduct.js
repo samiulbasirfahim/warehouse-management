@@ -31,7 +31,7 @@ const AddProduct = () => {
 			price,
 			addedBy: user?.email,
 		}
-		fetch("http://localhost:4000/add-car", {
+		fetch("https://quiet-mesa-05314.herokuapp.com/add-car", {
 			headers: {
 				"content-type": "application/json",
 				authorization: "Bearer " + jwtToken,

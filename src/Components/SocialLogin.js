@@ -1,6 +1,6 @@
 import React from "react"
 import { useSignInWithGoogle } from "react-firebase-hooks/auth"
-import { ImGithub, ImGoogle } from "react-icons/im"
+import {ImGoogle } from "react-icons/im"
 import auth from "../firebase.init"
 
 const SocialLogin = () => {

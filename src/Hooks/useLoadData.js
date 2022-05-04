@@ -6,14 +6,16 @@ const useLoadData = (url) => {
 	const [user] = useAuthState(auth)
 	const email = user?.email
 	const [cars, setCars] = useState([])
-	const jwtToken = window.localStorage.getItem("authorization-token")
+	const jwtToken = JSON.parse(
+		window.localStorage.getItem("authorization-token")
+	)
 
 	useEffect(() => {
 		fetch(url, {
 			headers: {
 				"content-type": "application/json",
 				authorization: "Bearer " + jwtToken,
-				email: email
+				email: email,
 			},
 		})
 			.then((res) => res.json())

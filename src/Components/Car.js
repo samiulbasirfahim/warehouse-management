@@ -1,9 +1,9 @@
 import React from "react"
 import { ImPriceTags } from "react-icons/im"
-import { useNavigate } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 
 const Car = ({car : {description, imgLink, price, title, stock, supplierName, _id}}) => {
-	const navigate = useNavigate()
+	const location = useLocation()
 	return (
 		<div className="bg-white rounded container mx-auto p-4 flex flex-col lg:items-center lg:flex-row overflow-x-hidden">
 			<img
@@ -39,12 +39,13 @@ const Car = ({car : {description, imgLink, price, title, stock, supplierName, _i
 					<ImPriceTags />
 					<span className="ml-4">$_{price}</span>
 				</p>
-				<button
-					onClick={() => navigate("/review/" + _id)}
-					className="hover:bg-[#ff5722] hover:text-[#90ba14] py-3 mt-4 w-full lg:w-1/2 rounded text-white font-bold font-mono font-xl bg-[#90ba14]"
+				<Link
+					state={{from:location}}
+					to={"/review/" + _id}
+					className="hover:bg-[#ff5722] block text-center hover:text-[#90ba14] py-3 mt-4 w-full lg:w-1/2 rounded text-white font-bold font-mono font-xl bg-[#90ba14]"
 				>
 					Review
-				</button>
+				</Link>
 			</div>
 		</div>
 	)

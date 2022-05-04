@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useAuthState } from "react-firebase-hooks/auth"
+import { useLocation, useNavigate, useParams } from "react-router-dom"
 import { PropagateLoader } from "react-spinners"
 import ReactHelmet from "../Components/ReactHelmet"
+import auth from "../firebase.init"
 
 const ReviewCar = () => {
+	const location = useLocation()
+	const navigate = useNavigate()
+	const from = location?.state?.from || "/"
 	const { carId } = useParams({})
+	const [user] = useAuthState(auth)
 	const [car, setCar] = useState()
 	useEffect(() => {
 		fetch("http://localhost:4000/car/" + carId)
@@ -18,12 +24,32 @@ const ReviewCar = () => {
 			</div>
 		)
 	}
+	const handleDelivere = () => {
+		const jwtToken = JSON.parse(
+			window.localStorage.getItem("authorization-token")
+		)
+		fetch("http://localhost:4000/delivered/" + car._id, {
+			headers: {
+				"content-type": "application/json",
+				Authorization: `Bearer ${jwtToken}`,
+				email: user?.email,
+			},
+		})
+			.then((res) => res.json())
+			.then((data) => {console.log(data)
+			if(data.modifiedCount >0 ){
+				setCar({...car, stock: +car?.stock - 1})
+			} else if(data.delete === 'deleted'){
+				navigate(from)
+			}
+		
+		})
+	}
 	const title = car?.title
-	console.log(title);
 	return (
-		<div className="min-h-screen flex items-center justify-between lg:px-8 xl:px-26 2xl:px-36 overflow-x-hidden">
+		<div className="min-h-screen pt-[14vh] flex items-center justify-between lg:px-8 xl:px-26 2xl:px-36 overflow-x-hidden">
 			<ReactHelmet>{title}</ReactHelmet>
-			<div className="lg:flex items-center justify-center py-12 2xl:px-20 lg:px-6 px-2">
+			<div className="lg:flex  items-center justify-center py-12 2xl:px-20 lg:px-6 px-2">
 				<div className="xl:w-2/6 lg:w-2/5 w-80 lg:block hidden">
 					<img className="w-full" alt="" src={car?.imgLink} />
 				</div>
@@ -64,7 +90,10 @@ const ReviewCar = () => {
 							Price: ${car?.price}
 						</p>
 						<div className="flex justify-center">
-							<button class="text-white bg-[#90ba14] hover:bg-[#90ba14]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#3b5998]/55 mr-2">
+							<button
+								onClick={handleDelivere}
+								className="text-white bg-[#90ba14] hover:bg-[#90ba14]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#3b5998]/55 mr-2"
+							>
 								Delivered
 							</button>
 						</div>

@@ -21,7 +21,7 @@ const AddProduct = () => {
 		const supplierName = event.target.supplierName.value
 		const stock = event.target.stock.value
 		const price = event.target.price.value
-		const jwtToken = window.localStorage.getItem("authorization-token")
+		const jwtToken = JSON.parse(window.localStorage.getItem("authorization-token"))
 		const carInfo = {
 			title,
 			imgLink,
@@ -31,7 +31,7 @@ const AddProduct = () => {
 			price,
 			addedBy: user?.email,
 		}
-		fetch("https://quiet-mesa-05314.herokuapp.com/add-car", {
+		fetch("http://localhost:4000/add-car", {
 			headers: {
 				"content-type": "application/json",
 				authorization: "Bearer " + jwtToken,

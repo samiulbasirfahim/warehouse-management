@@ -2,7 +2,6 @@ import React from "react"
 import Helmet from "react-helmet"
 
 const ReactHelmet = ({ children }) => {
-	console.log(children);
 	return (
 		<div>
 			<Helmet>

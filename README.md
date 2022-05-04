@@ -11,6 +11,8 @@
 -   In inventory page you can manage all of car
 -   In inventory page you can see all of car, and you can delete any car from here, and you can edit the info of any car, form here
 -   you can add car from add car page
+- 	If any user authorization token is invalid, she/he will be redirected to login page, and she/he will be logout automatically,
+
 
 <!-- <div style="border: 1px solid gray; display: flex; flex-direction:column; align-items:center; border-radius:15px; margin-bottom:15px">
 <h1 style="color: #90ba14; margin-bottom: 0px; border-bottom: 0px; font-weight: bold; " title="This is an inventory management website">Rapid dealer</h1>

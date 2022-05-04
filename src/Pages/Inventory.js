@@ -4,7 +4,7 @@ import ReactHelmet from "../Components/ReactHelmet"
 import useLoadData from "../Hooks/useLoadData"
 
 const Inventory = () => {
-	const { cars } = useLoadData("https://quiet-mesa-05314.herokuapp.com/cars")
+	const { cars, setCars } = useLoadData("https://quiet-mesa-05314.herokuapp.com/cars")
 	
 	return (
 		<div className="bg-white min-h-screen min-w-screen pt-[16vh] md:px-8 px-4 xl:px-26 2xl:px-36">
@@ -14,7 +14,7 @@ const Inventory = () => {
 			</p>
 			<div className={"grid justify-items-center gap-y-8"}>
 				{cars.map((car) => (
-					<CarSmall car={car}></CarSmall>
+					<CarSmall key={car._id} setCars={setCars} cars={cars} car={car}></CarSmall>
 				))}
 				
 			</div>

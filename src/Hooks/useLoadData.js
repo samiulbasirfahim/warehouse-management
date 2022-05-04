@@ -29,7 +29,7 @@ const useLoadData = (url) => {
 				return res.json()
 			})
 			.then((data) => setCars(data))
-	}, [])
+	}, [url])
 	return { cars, setCars }
 }
 

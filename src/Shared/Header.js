@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { Link, NavLink } from "react-router-dom"
+import { Link, NavLink, useLocation } from "react-router-dom"
 import { HiOutlineMenu, HiOutlineMenuAlt1 } from "react-icons/hi"
 import { useScrollTracker } from "react-scroll-tracker"
 import { useAuthState } from "react-firebase-hooks/auth"
@@ -8,6 +8,7 @@ import { signOut } from "firebase/auth"
 
 const Header = () => {
 	const [user] = useAuthState(auth)
+	const location = useLocation()
 	const [scrollY, setScrollY] = useState(0)
 	const { scrollY: scrollwork } = useScrollTracker()
 	useEffect(() => {
@@ -85,7 +86,7 @@ const Header = () => {
 										className={
 											"   font-bold  py-[8px] ml-0 px-[30px] hover:text-[#90ba14]"
 										}
-										to={"/inventor"}
+										to={"/inventory"}
 									>
 										Manage cars
 									</NavLink>
@@ -97,6 +98,7 @@ const Header = () => {
 											"   font-bold  py-[8px] mx-0  px-[30px] hover:text-[#90ba14]"
 										}
 										to={"/add-car"}
+										state={{ from: location }}
 									>
 										Add car
 									</NavLink>

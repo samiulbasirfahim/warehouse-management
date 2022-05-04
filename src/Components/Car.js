@@ -2,15 +2,7 @@ import React from "react"
 import { ImPriceTags } from "react-icons/im"
 import { useNavigate } from "react-router-dom"
 
-const Car = () => {
-	const imageLink = "https://i.ibb.co/X5LY5n6/download.jpg"
-	const title = "Porsche Cayman"
-	const description =
-		"The 718 models were made for the sport of it. They are mid-engined roadsters that unite the sporting spirit of the legendary Porsche 718 with the sports car of tomorrow – and transfer it to the roads of today’s world."
-	const supplierName = "fahim"
-	const stock = 50
-	const price = "2 kidneys + 2 eyes"
-	const _id = "kjfjkdsjhafjkhjfdhjasdhfjh1114jdf"
+const Car = ({car : {description, imgLink, price, title, stock, supplierName, _id}}) => {
 	const navigate = useNavigate()
 	return (
 		<div className="bg-white rounded container mx-auto p-4 flex flex-col lg:items-center lg:flex-row overflow-x-hidden">
@@ -19,7 +11,7 @@ const Car = () => {
 				data-aos-duration="1000"
 				data-aos-easing="ease-in-back"
 				data-aos-delay="50"
-				src={imageLink}
+				src={imgLink}
 				alt=""
 				className="lg:h-[360px]  w-auto rounded"
 			/>

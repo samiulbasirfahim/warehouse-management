@@ -55,10 +55,10 @@ const AddProduct = () => {
 	return (
 		<div className="flex pt-[14vh] w-full justify-center items-center min-h-screen">
 			<form
-				className="bg-slate-100 rounded p-6 w-5/6 grid"
+				className="bg-slate-100 rounded p-6 w-5/6 flex flex-col"
 				onSubmit={handleAddCar}
 			>
-				<div className="flex flex-col w-full border lg:px-6 py-2 mt-4 rounded ">
+				<div className="flex flex-col border lg:px-6 py-2 mt-4 rounded ">
 					<label htmlFor="imgLink">Image link</label>
 					<div className="flex justify-between items-center">
 						<input

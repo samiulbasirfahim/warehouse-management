@@ -4,7 +4,7 @@ import useLoadData from "../Hooks/useLoadData"
 import Car from "./Car"
 
 const InventoryOverview = () => {
-	const { cars } = useLoadData("http://localhost:4000/cars?limit=5")
+	const { cars } = useLoadData("https://quiet-mesa-05314.herokuapp.com/cars?limit=5")
 	return (
 		<div>
 			<div className="bg-white rounded w-4/5 mx-auto">

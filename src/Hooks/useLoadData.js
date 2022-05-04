@@ -1,9 +1,21 @@
 import { useEffect, useState } from "react"
+import { useAuthState } from "react-firebase-hooks/auth"
+import auth from "../firebase.init"
 
 const useLoadData = (url) => {
+	const [user] = useAuthState(auth)
+	const email = user?.email
 	const [cars, setCars] = useState([])
+	const jwtToken = window.localStorage.getItem("authorization-token")
+
 	useEffect(() => {
-		fetch(url)
+		fetch(url, {
+			headers: {
+				"content-type": "application/json",
+				authorization: "Bearer " + jwtToken,
+				email: email
+			},
+		})
 			.then((res) => res.json())
 			.then((data) => setCars(data))
 	}, [])

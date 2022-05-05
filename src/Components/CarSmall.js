@@ -17,7 +17,7 @@ const CarSmall = ({
 	)
 	const location = useLocation()
 	const handleDelete = () => {
-		fetch("http://localhost:4000/delete/car/" + _id, {
+		fetch("https://quiet-mesa-05314.herokuapp.com/delete/car/" + _id, {
 			headers: {
 				"content-type": "application/json",
 				authorization: "Bearer " + jwtToken,

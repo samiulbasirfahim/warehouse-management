@@ -3,6 +3,7 @@ import React, { useState } from "react"
 import { useAuthState } from "react-firebase-hooks/auth"
 import toast from "react-hot-toast"
 import { useLocation, useNavigate } from "react-router-dom"
+import ReactHelmet from "../Components/ReactHelmet"
 import auth from "../firebase.init"
 
 const AddProduct = () => {
@@ -61,6 +62,7 @@ const AddProduct = () => {
 	}
 	return (
 		<div className="flex pt-[14vh] w-full justify-center items-center min-h-screen">
+			<ReactHelmet>Add car</ReactHelmet>
 			<form
 				className="bg-slate-100 rounded p-6 w-5/6 flex flex-col"
 				onSubmit={handleAddCar}

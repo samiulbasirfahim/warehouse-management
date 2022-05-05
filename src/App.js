@@ -1,3 +1,4 @@
+import AnimatedCursor from "react-animated-cursor"
 import { Toaster } from "react-hot-toast"
 import { Route, Routes } from "react-router-dom"
 import RequireAuth from "./Components/RequireAuth"
@@ -18,6 +19,7 @@ function App() {
 	const { isDarkMode } = useDarkMode()
 	return (
 		<div className={`${isDarkMode && "dark"}`}>
+			<AnimatedCursor />
 			<div className="min-h-[100vh]">
 				<Header></Header>
 				{/* 

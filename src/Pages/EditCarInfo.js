@@ -129,7 +129,7 @@ const EditCarInfo = () => {
 						id="stock"
 						name="stock"
 						type="number"
-						min={0}
+						min={1}
 						placeholder="Stock"
 						required
 					></input>
@@ -154,7 +154,7 @@ const EditCarInfo = () => {
 						id="Price"
 						name="price"
 						type="number"
-						min={0}
+						min={1}
 						placeholder="Price"
 						required
 					></input>

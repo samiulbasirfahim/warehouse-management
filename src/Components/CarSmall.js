@@ -4,7 +4,8 @@ import { useAuthState } from "react-firebase-hooks/auth"
 import { MdDelete, MdEdit, MdPreview } from "react-icons/md"
 import { Link, useLocation, useNavigate } from "react-router-dom"
 import auth from "../firebase.init"
-
+import { confirmAlert } from "react-confirm-alert"
+import "react-confirm-alert/src/react-confirm-alert.css"
 const CarSmall = ({
 	car: { description, imgLink, price, title, stock, supplierName, _id },
 	setCars,
@@ -16,6 +17,7 @@ const CarSmall = ({
 		window.localStorage.getItem("authorization-token")
 	)
 	const location = useLocation()
+
 	const handleDelete = () => {
 		fetch("https://quiet-mesa-05314.herokuapp.com/delete/car/" + _id, {
 			headers: {
@@ -39,6 +41,23 @@ const CarSmall = ({
 				}
 			})
 	}
+	const confirmDelete = () => {
+		confirmAlert({
+			title: "Confirm to delete",
+			message: "Are you sure to do this.",
+			buttons: [
+				{
+					label: "Yes",
+					onClick: () =>handleDelete(),
+				},
+				{
+					label: "No",
+					onClick: () =>{},
+				},
+			],
+		})
+	}
+
 	return (
 		<div className="bg-slate-300 w-[95%] lg:w-5/6  flex flex-col lg:flex-row lg:items-center lg:justify-between rounded-2xl">
 			<div className="flex justify-between lg:w-3/4 px-4 py-2">
@@ -59,12 +78,12 @@ const CarSmall = ({
 				<Link state={{ from: location }} to={`/review/${_id}`}>
 					<MdPreview size={"2em"} />
 				</Link>
-				<button onClick={handleDelete}>
+				<button onClick={confirmDelete}>
 					<MdDelete size={"2em"} />
 				</button>
-				<span>
+				<Link to={"/"}>
 					<MdEdit size={"2em"} />
-				</span>
+				</Link>
 			</dir>
 		</div>
 	)

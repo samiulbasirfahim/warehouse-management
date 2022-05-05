@@ -3,6 +3,7 @@ import CarSmall from "../Components/CarSmall"
 import ReactHelmet from "../Components/ReactHelmet"
 import useLoadData from "../Hooks/useLoadData"
 
+
 const Inventory = () => {
 	const [limit, setLimit] = useState(10)
 	const [currentPage, setCurrentPage] = useState(0)
@@ -12,12 +13,19 @@ const Inventory = () => {
 		fetch(`https://quiet-mesa-05314.herokuapp.com/get-total`)
 			.then((res) => res.json())
 			.then((data) => setTotalCar(data.result))
-	}, [limit])
+	}, [])
+	
 	useEffect(() => {
 		setPages(Math.ceil(totalCar / limit))
 	}, [totalCar, limit])
+	useEffect(() => {
+		console.log(pages);
+		if (currentPage  > pages){
+			setCurrentPage(Math.max(pages))
+		}
+	},[limit, pages])
 	const { cars, setCars } = useLoadData(
-		`http://localhost:4000/cars?limit=${limit}&page=${currentPage}`
+		`https://quiet-mesa-05314.herokuapp.com/cars?limit=${limit}&page=${currentPage}`
 	)
 	return (
 		<div className="bg-white min-h-screen min-w-screen pt-[16vh] md:px-8 px-4 xl:px-26 2xl:px-36">
@@ -34,7 +42,8 @@ const Inventory = () => {
 						car={car}
 					></CarSmall>
 				))}
-				<dir className='w-1/2 mx-auto flex justify-center bg-gray-400 py-8 rounded mb-6'>
+				<dir className='min:w-1/2 mx-auto flex justify-center bg-gray-400 py-8 rounded mb-6 flex-wrap px-8'>
+					
 					{[...Array(pages).keys()].map((num) => (
 						<button
 							onClick={() => setCurrentPage(num)}
@@ -47,6 +56,7 @@ const Inventory = () => {
 							{num + 1}
 						</button>
 					))}
+					<input type="range" min={5} max={25} step={5} defaultValue={limit} onChange={(e) => setLimit(e.target.value)} />
 				</dir>
 			</div>
 		</div>

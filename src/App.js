@@ -11,6 +11,7 @@ import MyCars from "./Pages/MyCars"
 import Register from "./Pages/Register"
 import ResetPassword from "./Pages/ResetPassword"
 import ReviewCar from "./Pages/ReviewCar"
+import Footer from "./Shared/Footer"
 import Header from "./Shared/Header"
 
 function App() {
@@ -66,12 +67,16 @@ function App() {
 							</RequireAuth>
 						}
 					></Route>
-					<Route path='/edit-car/:id' element={
-						<RequireAuth>
-							<EditCarInfo/>
-						</RequireAuth>
-					}></Route>
+					<Route
+						path="/edit-car/:id"
+						element={
+							<RequireAuth>
+								<EditCarInfo />
+							</RequireAuth>
+						}
+					></Route>
 				</Routes>
+				<Footer></Footer>
 			</div>
 			<Toaster />
 		</div>

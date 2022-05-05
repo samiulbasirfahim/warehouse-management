@@ -5,6 +5,7 @@ import { useLocation, useNavigate, useParams } from "react-router-dom"
 import { PropagateLoader } from "react-spinners"
 import ReactHelmet from "../Components/ReactHelmet"
 import auth from "../firebase.init"
+import useLoadSingleCar from "../Hooks/useLoadSingleCar"
 
 const ReviewCar = () => {
 	const location = useLocation()
@@ -12,12 +13,7 @@ const ReviewCar = () => {
 	const from = location?.state?.from || "/"
 	const { carId } = useParams({})
 	const [user] = useAuthState(auth)
-	const [car, setCar] = useState()
-	useEffect(() => {
-		fetch("https://quiet-mesa-05314.herokuapp.com/car/" + carId)
-			.then((res) => res.json())
-			.then((data) => setCar(data))
-	}, [])
+	const {car, setCar} = useLoadSingleCar(carId)
 	if (!car) {
 		return (
 			<div className="h-screen bg-white  w-screen flex items-center justify-center">

@@ -81,7 +81,7 @@ const CarSmall = ({
 				<button onClick={confirmDelete}>
 					<MdDelete size={"2em"} />
 				</button>
-				<Link to={"/"}>
+				<Link to={"/edit-car/"+ _id} state={{from: location }}>
 					<MdEdit size={"2em"} />
 				</Link>
 			</dir>

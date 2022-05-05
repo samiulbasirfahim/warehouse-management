@@ -3,9 +3,11 @@ import { Route, Routes } from "react-router-dom"
 import RequireAuth from "./Components/RequireAuth"
 import useDarkMode from "./Hooks/useDarkMode"
 import AddProduct from "./Pages/AddProduct"
+import EditCarInfo from "./Pages/EditCarInfo"
 import Home from "./Pages/Home"
 import Inventory from "./Pages/Inventory"
 import Login from "./Pages/Login"
+import MyCars from "./Pages/MyCars"
 import Register from "./Pages/Register"
 import ResetPassword from "./Pages/ResetPassword"
 import ReviewCar from "./Pages/ReviewCar"
@@ -56,6 +58,19 @@ function App() {
 							</RequireAuth>
 						}
 					></Route>
+					<Route
+						path="/my-cars"
+						element={
+							<RequireAuth>
+								<MyCars></MyCars>
+							</RequireAuth>
+						}
+					></Route>
+					<Route path='/edit-car/:id' element={
+						<RequireAuth>
+							<EditCarInfo/>
+						</RequireAuth>
+					}></Route>
 				</Routes>
 			</div>
 			<Toaster />

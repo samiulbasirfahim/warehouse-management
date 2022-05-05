@@ -18,7 +18,7 @@ const Car = ({car : {description, imgLink, price, title, stock, supplierName, _i
 			<div
 				className="px-8"
 				data-aos="fade-left"
-				data-aos-duration="1000"
+				data-aos-duration="1000"d
 				data-aos-easing="ease-in-back"
 				data-aos-delay="50"
 			>

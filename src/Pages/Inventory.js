@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import { PropagateLoader } from "react-spinners"
 import CarSmall from "../Components/CarSmall"
 import ReactHelmet from "../Components/ReactHelmet"
 import useLoadData from "../Hooks/useLoadData"
@@ -27,6 +28,13 @@ const Inventory = () => {
 	const { cars, setCars } = useLoadData(
 		`https://quiet-mesa-05314.herokuapp.com/cars?limit=${limit}&page=${currentPage}`
 	)
+	if(!cars.length > 0){
+		return (
+			<div className="h-screen bg-white  w-screen flex items-center justify-center">
+				<PropagateLoader speedMultiplier={6}></PropagateLoader>
+			</div>
+		)
+	}
 	return (
 		<div className="bg-white min-h-screen min-w-screen pt-[16vh] md:px-8 px-4 xl:px-26 2xl:px-36">
 			<ReactHelmet>Inventory</ReactHelmet>
@@ -43,7 +51,7 @@ const Inventory = () => {
 					></CarSmall>
 				))}
 				<dir className='min:w-1/2 mx-auto flex justify-center bg-gray-400 py-8 rounded mb-6 flex-wrap px-8'>
-					
+
 					{[...Array(pages).keys()].map((num) => (
 						<button
 							onClick={() => setCurrentPage(num)}

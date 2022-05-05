@@ -110,7 +110,7 @@ const Header = () => {
 										className={
 											" font-bold  py-[8px]  mx-0 px-[30px] hover:text-[#90ba14]"
 										}
-										to={"/my-car"}
+										to={"/my-cars"}
 									>
 										My cars
 									</NavLink>

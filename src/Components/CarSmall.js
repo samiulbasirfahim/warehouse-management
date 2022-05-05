@@ -74,7 +74,7 @@ const CarSmall = ({
 					</p>
 				</div>
 			</div>
-			<dir className="flex lg:w-1/4 justify-around">
+			<dir className="flex lg:w-1/4 py-4 lg:py-0 justify-around mt-4 lg:mt-0">
 				<Link state={{ from: location }} to={`/review/${_id}`}>
 					<MdPreview size={"2em"} />
 				</Link>

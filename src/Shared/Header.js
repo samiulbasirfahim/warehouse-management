@@ -25,7 +25,7 @@ const Header = () => {
 	return (
 		<div>
 			<header
-				className={`fixed w-full z-50 top-0  duration-500 md:px-8 xl:px-26 2xl:px-36 flex items-center justify-between ${
+				className={`fixed w-full z-50 top-0  duration-500 lg:px-8 xl:px-26 2xl:px-36 flex items-center justify-between ${
 					scrollY < 200
 						? "min-h-[14vh] backdrop-blur-[0px] text-white lg:text-black"
 						: "min-h-[8vh] backdrop-blur-[50px] text-white bg-black/60"
@@ -64,7 +64,7 @@ const Header = () => {
 							style={
 								menuOpen ? { top: "4vh" } : { top: "-100vh" }
 							}
-							className="grid gap-0 lg:flex pt-12 lg:pt-0 justify-items-center items-center w-full  lg:ml-auto lg:justify-between h-[80vh] bg-gray-800/90 lg:backdrop-blur-0 backdrop-blur-xl lg:bg-transparent lg:h-auto absolute lg:static duration-700"
+							className="grid gap-0 lg:flex pt-24 lg:pt-0 justify-items-center items-center w-full  lg:ml-auto lg:justify-between h-[80vh] bg-gray-800/90 lg:backdrop-blur-0 backdrop-blur-xl lg:bg-transparent lg:h-auto absolute lg:static duration-700"
 						>
 							<NavLink
 								style={({ isActive }) =>

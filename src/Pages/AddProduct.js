@@ -81,7 +81,7 @@ const AddProduct = () => {
 							placeholder="Image Link"
 							required
 						></input>
-						<img className="lg:w-64" src={carInfo.img} alt="" />
+						<img className="lg:w-64 w-36" src={carInfo.img} alt="" />
 					</div>
 				</div>
 				<div className="flex flex-col w-full border lg:px-6 py-2 mt-4 rounded ">

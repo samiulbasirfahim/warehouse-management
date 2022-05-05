@@ -94,7 +94,7 @@ const EditCarInfo = () => {
 							placeholder="Image Link"
 							required
 						></input>
-						<img className="lg:w-64" src={!carInfo.imgLink ? car?.imgLink : carInfo.imgLink} alt="" />
+						<img className="lg:w-64 w-36" src={!carInfo.imgLink ? car?.imgLink : carInfo.imgLink} alt="" />
 					</div>
 				</div>
 				<div className="flex flex-col w-full border lg:px-6 py-2 mt-4 rounded ">

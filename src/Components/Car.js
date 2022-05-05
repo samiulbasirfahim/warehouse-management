@@ -1,6 +1,6 @@
 import React from "react"
 import { ImPriceTags } from "react-icons/im"
-import { Link, useLocation, useNavigate } from "react-router-dom"
+import { Link, useLocation} from "react-router-dom"
 
 const Car = ({car : {description, imgLink, price, title, stock, supplierName, _id}}) => {
 	const location = useLocation()
@@ -13,7 +13,7 @@ const Car = ({car : {description, imgLink, price, title, stock, supplierName, _i
 				data-aos-delay="50"
 				src={imgLink}
 				alt=""
-				className="lg:h-[360px]  w-auto rounded"
+				className="lg:w-[480px] w-auto rounded"
 			/>
 			<div
 				className="px-8"

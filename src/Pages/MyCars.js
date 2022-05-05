@@ -22,7 +22,7 @@ const MyCars = () => {
 			.then((res) => res.json())
 			.then((data) => setMyCars(data))
 	}, [])
-	if(!myCars){
+	if (!myCars) {
 		return (
 			<div className="h-screen bg-white  w-screen flex items-center justify-center">
 				<PropagateLoader speedMultiplier={6}></PropagateLoader>
@@ -36,7 +36,12 @@ const MyCars = () => {
 				My cars
 			</p>
 			<div className={"grid justify-items-center gap-y-8"}>
-				{myCars.map((car) => (
+				{myCars.length === 0 && (
+					<div className={"flex justify-center items-center h-[70vh]"}>
+						<p className="text-2xl text-red-600 font-bold font-mono ">You didn't add any cars</p>
+					</div>
+				)}
+				{Array.isArray(myCars) && myCars.map((car) => (
 					<CarSmall
 						key={car._id}
 						setCars={setMyCars}

@@ -1,24 +1,28 @@
 import React from "react"
 import { ImPriceTags } from "react-icons/im"
-import { Link, useLocation} from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 
-const Car = ({car : {description, imgLink, price, title, stock, supplierName, _id}}) => {
+const Car = ({
+	car: { description, imgLink, price, title, stock, supplierName, _id },
+}) => {
 	const location = useLocation()
 	return (
-		<div className="bg-white rounded container mx-auto p-4 flex flex-col lg:items-center lg:flex-row overflow-x-hidden">
-			<img
-				data-aos="fade-right"
-				data-aos-duration="1000"
-				data-aos-easing="ease-in-back"
-				data-aos-delay="50"
-				src={imgLink}
-				alt=""
-				className="lg:w-[480px] w-auto rounded"
-			/>
+		<div className="bg-white  rounded container mx-auto p-4 flex flex-col justify-center lg:items-center lg:flex-row overflow-x-hidden">
+			<div className="lg:w-full lg:h-[360px] flex justify-center">
+				<img
+					data-aos="fade-right"
+					data-aos-duration="1000"
+					data-aos-easing="ease-in-back"
+					data-aos-delay="50"
+					src={imgLink}
+					alt=""
+					className="lg:w-full w-1/2 rounded"
+				/>
+			</div>
 			<div
 				className="px-8"
 				data-aos="fade-left"
-				data-aos-duration="1000"d
+				data-aos-duration="1000"
 				data-aos-easing="ease-in-back"
 				data-aos-delay="50"
 			>
@@ -40,7 +44,7 @@ const Car = ({car : {description, imgLink, price, title, stock, supplierName, _i
 					<span className="ml-4">$_{price}</span>
 				</p>
 				<Link
-					state={{from:location}}
+					state={{ from: location }}
 					to={"/review/" + _id}
 					className="hover:bg-[#ff5722] block text-center hover:text-[#90ba14] py-3 mt-4 w-full lg:w-1/2 rounded text-white font-bold font-mono font-xl bg-[#90ba14]"
 				>

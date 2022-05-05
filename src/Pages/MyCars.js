@@ -47,6 +47,7 @@ const MyCars = () => {
 						setCars={setMyCars}
 						cars={myCars}
 						car={car}
+						isShowDelete={true}
 					></CarSmall>
 				))}
 			</div>

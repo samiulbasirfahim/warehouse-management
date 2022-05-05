@@ -44,7 +44,11 @@ const ReviewCar = () => {
 				console.log(data)
 				toast.success("Product delivered successfully")
 				if (data.modifiedCount > 0) {
-					setCar({ ...car, stock: +car?.stock - 1 })
+					setCar({
+						...car,
+						stock: +car?.stock - 1,
+						sold: +car?.sold + 1,
+					})
 				}
 				// else if (data.delete === "deleted") {
 				// 	navigate(from)

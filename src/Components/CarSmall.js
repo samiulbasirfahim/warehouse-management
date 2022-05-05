@@ -10,6 +10,7 @@ const CarSmall = ({
 	car: { description, imgLink, price, title, stock, supplierName, _id },
 	setCars,
 	cars,
+	isShowDelete,
 }) => {
 	const [user] = useAuthState(auth)
 	const navigate = useNavigate()
@@ -62,27 +63,28 @@ const CarSmall = ({
 		<div className="bg-slate-300 w-[95%] lg:w-5/6  flex flex-col lg:flex-row lg:items-center lg:justify-between rounded-2xl">
 			<div className="flex justify-between lg:w-3/4 px-4 py-2">
 				<img
-					className="lg:w-60 w-32  rounded-2xl"
+					className="lg:w-60 w-24  rounded-2xl"
 					src={imgLink}
 					alt=""
 				/>
 				<div className="flex flex-col justify-center">
 					<p className="font-bold">{title}</p>
 					<p className="flex justify-evenly font-thin font-mono text-gray-700">
-						Stock:{stock}{" "}
-						<span className="ml-2"> Price:${price}</span>
+						Price:${price}
 					</p>
 				</div>
 			</div>
-			<dir className="flex lg:w-1/4 py-4 lg:py-0 justify-around mt-4 lg:mt-0">
+			<dir className="flex lg:w-1/4 py-2 lg:py-0 justify-around text-xl mt-2 lg:mt-0">
 				<Link state={{ from: location }} to={`/review/${_id}`}>
-					<MdPreview size={"2em"} />
+					<MdPreview />
 				</Link>
-				<button onClick={confirmDelete}>
-					<MdDelete size={"2em"} />
-				</button>
+				{isShowDelete && (
+					<button onClick={confirmDelete}>
+						<MdDelete />
+					</button>
+				)}
 				<Link to={"/edit-car/" + _id} state={{ from: location }}>
-					<MdEdit size={"2em"} />
+					<MdEdit />
 				</Link>
 			</dir>
 		</div>

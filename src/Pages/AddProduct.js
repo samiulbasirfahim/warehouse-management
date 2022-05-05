@@ -23,7 +23,9 @@ const AddProduct = () => {
 		const supplierName = event.target.supplierName.value
 		const stock = event.target.stock.value
 		const price = event.target.price.value
-		const jwtToken = JSON.parse(window.localStorage.getItem("authorization-token"))
+		const jwtToken = JSON.parse(
+			window.localStorage.getItem("authorization-token")
+		)
 		const carInfo = {
 			title,
 			imgLink,
@@ -31,6 +33,7 @@ const AddProduct = () => {
 			supplierName,
 			stock,
 			price,
+			sold: 0,
 			addedBy: user?.email,
 		}
 		fetch("https://quiet-mesa-05314.herokuapp.com/add-car", {
@@ -81,7 +84,11 @@ const AddProduct = () => {
 							placeholder="Image Link"
 							required
 						></input>
-						<img className="lg:w-64 w-36" src={carInfo.img} alt="" />
+						<img
+							className="lg:w-64 w-36"
+							src={carInfo.img}
+							alt=""
+						/>
 					</div>
 				</div>
 				<div className="flex flex-col w-full border lg:px-6 py-2 mt-4 rounded ">

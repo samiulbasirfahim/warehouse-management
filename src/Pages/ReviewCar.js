@@ -127,6 +127,9 @@ const ReviewCar = () => {
 									out of stock
 								</p>
 							)}
+							<p className="text-base leading-4 mt-4 text-purple-600">
+								sold : {car?.sold}
+							</p>
 							<p className="text-base leading-4 mt-4 text-green-600">
 								Supplier : {car?.supplierName}
 							</p>

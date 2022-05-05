@@ -17,6 +17,12 @@ const CustomerReview = () => {
 		const feedback = event.target.feedback.value
 		const email = user.email
 		const name = user.displayName
+		const review = {
+			subject,
+			feedback,
+			email,
+			name,
+		}
 		fetch("https://quiet-mesa-05314.herokuapp.com/add-review", {
 			method: "POST",
 			headers: {
@@ -24,26 +30,22 @@ const CustomerReview = () => {
 				authorization: "Bearer " + jwtToken,
 				email: user?.email,
 			},
-			body: JSON.stringify({
-				subject,
-				feedback,
-				email,
-				name,
-			}),
+			body: JSON.stringify({ ...review }),
 		})
 			.then((res) => res.json())
 			.then((data) => {
 				if (data.insertedId) {
+					event.target.reset()
 					toast.success("Review added successfully")
 				}
 			})
 	}
 	return (
-		<div className="lg:px-8 xl:px-26 2xl:px-36 ">
+		<div id="customer-review" className="lg:px-8 xl:px-26 2xl:px-36 ">
 			<p className="text-4xl py-2 mt-6 text-center font-bold font-mono">
 				Add a review
 			</p>
-			<div className="text-black py-20">
+			<div className="text-black">
 				<div className="container mx-auto flex flex-col md:flex-row my-6 md:my-24">
 					<div className="flex flex-col w-full lg:w-1/3 p-8">
 						<p className="ml-6 text-yellow-300 text-lg uppercase tracking-loose">

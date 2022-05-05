@@ -45,9 +45,10 @@ const ReviewCar = () => {
 				toast.success("Product delivered successfully")
 				if (data.modifiedCount > 0) {
 					setCar({ ...car, stock: +car?.stock - 1 })
-				} else if (data.delete === "deleted") {
-					navigate(from)
 				}
+				// else if (data.delete === "deleted") {
+				// 	navigate(from)
+				// }
 			})
 	}
 	const handleAddStock = (event) => {
@@ -116,9 +117,16 @@ const ReviewCar = () => {
 							<p className="text-base leading-4 mt-2 text-gray-400">
 								Product id: {car?._id}
 							</p>
-							<p className="text-base leading-4 mt-4 text-blue-600">
-								Stocks: {car?.stock}
-							</p>
+
+							{car.stock > 0 ? (
+								<p className="text-base leading-4 mt-4 text-blue-600">
+									Stocks: {car?.stock != 0 && car?.stock}
+								</p>
+							) : (
+								<p className="text-base leading-4 mt-4 text-red-600">
+									out of stock
+								</p>
+							)}
 							<p className="text-base leading-4 mt-4 text-green-600">
 								Supplier : {car?.supplierName}
 							</p>
@@ -126,12 +134,14 @@ const ReviewCar = () => {
 								Price: ${car?.price}
 							</p>
 							<div className="flex justify-center">
-								<button
-									onClick={handleDelivere}
-									className="text-white bg-[#90ba14] hover:bg-[#90ba14]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#3b5998]/55 mr-2"
-								>
-									Delivered
-								</button>
+								{car.stock > 0 && (
+									<button
+										onClick={handleDelivere}
+										className="text-white bg-[#90ba14] hover:bg-[#90ba14]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#3b5998]/55 mr-2"
+									>
+										Delivered
+									</button>
+								)}
 							</div>
 							<form
 								className=" mt-6 py-2 px-6 rounded-lg bg-slate-100 grid"

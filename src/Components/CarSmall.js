@@ -48,11 +48,11 @@ const CarSmall = ({
 			buttons: [
 				{
 					label: "Yes",
-					onClick: () =>handleDelete(),
+					onClick: () => handleDelete(),
 				},
 				{
 					label: "No",
-					onClick: () =>{},
+					onClick: () => {},
 				},
 			],
 		})
@@ -62,7 +62,7 @@ const CarSmall = ({
 		<div className="bg-slate-300 w-[95%] lg:w-5/6  flex flex-col lg:flex-row lg:items-center lg:justify-between rounded-2xl">
 			<div className="flex justify-between lg:w-3/4 px-4 py-2">
 				<img
-					className="h-16 lg:h-36  rounded-2xl"
+					className="lg:w-60 w-32  rounded-2xl"
 					src={imgLink}
 					alt=""
 				/>
@@ -81,7 +81,7 @@ const CarSmall = ({
 				<button onClick={confirmDelete}>
 					<MdDelete size={"2em"} />
 				</button>
-				<Link to={"/edit-car/"+ _id} state={{from: location }}>
+				<Link to={"/edit-car/" + _id} state={{ from: location }}>
 					<MdEdit size={"2em"} />
 				</Link>
 			</dir>

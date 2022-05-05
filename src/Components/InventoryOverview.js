@@ -19,7 +19,7 @@ const InventoryOverview = () => {
 					))}
 				</div>
 				<Link
-					className="text-white mx-auto block text-2xl lg:w-1/2 bg-[#90ba14] hover:bg-[#90ba14]/80 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50  rounded-lg font-bold px-5 py-2.5 text-center items-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30"
+					className="text-white lg:mx-auto block text-2xl mx-8 lg:w-1/2 bg-[#90ba14] hover:bg-[#90ba14]/80 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50  rounded-lg font-bold px-5 py-2.5 text-center items-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30"
 					to="/inventory"
 				>
 					Manage Inventory

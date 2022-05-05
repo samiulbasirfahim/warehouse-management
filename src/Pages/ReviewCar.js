@@ -1,6 +1,7 @@
 import { signOut } from "firebase/auth"
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { useAuthState } from "react-firebase-hooks/auth"
+import toast from "react-hot-toast"
 import { useLocation, useNavigate, useParams } from "react-router-dom"
 import { PropagateLoader } from "react-spinners"
 import ReactHelmet from "../Components/ReactHelmet"
@@ -41,8 +42,10 @@ const ReviewCar = () => {
 			})
 			.then((data) => {
 				console.log(data)
+				toast.success('Product delivered successfully')
 				if (data.modifiedCount > 0) {
 					setCar({ ...car, stock: +car?.stock - 1 })
+
 				} else if (data.delete === "deleted") {
 					navigate(from)
 				}
@@ -72,7 +75,9 @@ const ReviewCar = () => {
 			})
 			.then((data) => {
 				if (data.modifiedCount > 0) {
+					event.target.reset()
 					setCar({ ...car, stock: +car.stock + stock })
+					toast.success(`${stock} more car added to stock.`)
 				}
 			})
 	}

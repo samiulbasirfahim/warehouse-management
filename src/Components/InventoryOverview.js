@@ -14,7 +14,7 @@ const InventoryOverview = () => {
 		)
 	}
 	return (
-		<div className=" border-y-2 border-gray-400">
+		<div id="inventory-overview" className=" border-y-2 border-gray-400">
 			<div className=" rounded w-4/5 mx-auto">
 				<p className="text-4xl py-12 lg:py-28 dark:text-white text-center font-bold font-mono">
 					Latest 6 car

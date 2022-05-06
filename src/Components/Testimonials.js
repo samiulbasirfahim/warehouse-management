@@ -13,7 +13,7 @@ const Testimonials = () => {
 		)
 	}
 	return (
-		<div>
+		<div id="testimonials">
 			<div className="py-16 border-y-2 border-gray-400">
 				<div className="container mx-auto px-4 flex flex-col-reverse lg:items-center justify-between lg:flex-row">
 					<div className="mb-14 xl:mb-0">

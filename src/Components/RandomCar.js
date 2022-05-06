@@ -29,7 +29,7 @@ const RandomCar = () => {
 		)
 	}
 	return (
-		<div className="py-16  border-t-2 border-gray-400">
+		<div id="randomCar" className="py-16  border-t-2 border-gray-400">
 			<p className="text-4xl py-8 text-center font-bold font-mono dark:text-white">
 				Random Hot Car
 			</p>

@@ -18,6 +18,7 @@ const HomeBanner = () => {
 	const RapidDealer = batch(StickyIn(), FadeIn(), ZoomIn())
 	return (
 		<div
+		id="home-banner"
 			className="text-4xl w-full min-h-full
 		bg-blend-overlay bg-fixed bg-center bg-no-repeat bg-cover bg-[url('https://i.ibb.co/JsyDd3T/raphael-schaller-o-Xq5-Hbf-c-g-unsplash.jpg')] dark:bg-[url('https://i.ibb.co/mRM8pHR/pexels-sourav-mishra-2710043.jpg')]"
 		>

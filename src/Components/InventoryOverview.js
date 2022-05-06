@@ -7,8 +7,8 @@ const InventoryOverview = () => {
 	const { cars } = useLoadData("https://quiet-mesa-05314.herokuapp.com/cars?limit=5")
 	return (
 		<div>
-			<div className="bg-white rounded w-4/5 mx-auto">
-				<p className="text-4xl py-12 lg:py-28 text-center font-bold font-mono">
+			<div className=" rounded w-4/5 mx-auto">
+				<p className="text-4xl py-12 lg:py-28 dark:text-white text-center font-bold font-mono">
 					Latest 6 car
 				</p>
 			</div>

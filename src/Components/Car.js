@@ -7,7 +7,7 @@ const Car = ({
 }) => {
 	const location = useLocation()
 	return (
-		<div className="bg-white  rounded container mx-auto p-4 flex flex-col justify-center lg:items-center lg:flex-row overflow-x-hidden">
+		<div className="bg-white dark:bg-gray-800 rounded container mx-auto p-4 flex flex-col justify-center lg:items-center lg:flex-row overflow-x-hidden">
 			<div className="lg:w-full lg:h-[360px] flex justify-center">
 				<img
 					data-aos="fade-right"
@@ -26,11 +26,11 @@ const Car = ({
 				data-aos-easing="ease-in-back"
 				data-aos-delay="50"
 			>
-				<p className="text-2xl lg:text-4xl py-4 lg:py-10 text-center font-bold font-mono">
+				<p className="text-2xl lg:text-4xl py-4 lg:py-10 text-center font-bold font-mono dark:text-white">
 					{title}
 				</p>
 
-				<p className="text-gray-500 text-xs lg:text-base">
+				<p className="text-gray-500 text-xs lg:text-base dark:text-gray-300">
 					{description.length > 250
 						? description.slice(0, 250) + " ..."
 						: description}
@@ -39,7 +39,7 @@ const Car = ({
 				<p className="text-[#ff5722] text-sm">
 					Supplier : {supplierName}
 				</p>
-				<p className="flex items-center text-center my-2 font-semibold font-mono lg:text-xl">
+				<p className="flex items-center text-center my-2 font-semibold font-mono lg:text-xl dark:text-gray-50">
 					<ImPriceTags />
 					<span className="ml-4">$_{price}</span>
 				</p>

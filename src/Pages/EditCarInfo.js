@@ -14,7 +14,9 @@ const EditCarInfo = () => {
 	const location = useLocation()
 	const from = location?.state?.from || "/"
 	const { id } = useParams()
-	const { car } = useLoadSingleCar(id)
+	const { car } = useLoadSingleCar(
+		"https://quiet-mesa-05314.herokuapp.com/car/" + id
+	)
 	const [carInfo, setCarInfo] = useState({
 		img: "",
 	})
@@ -99,8 +101,8 @@ const EditCarInfo = () => {
 							defaultValue={car?.imgLink}
 						></input>
 						<img
-							className="lg:w-64 w-36"
-							src={carInfo.img}
+							className="lg:w-64 w-36 h-20"
+							src={carInfo.img ? carInfo.img : car?.imgLink}
 							alt=""
 						/>
 					</div>
@@ -177,7 +179,6 @@ const EditCarInfo = () => {
 						placeholder="Price"
 						required
 						defaultValue={car?.price}
-						
 					></input>
 				</div>
 				<input

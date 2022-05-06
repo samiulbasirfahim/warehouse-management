@@ -31,7 +31,7 @@ const MyCars = () => {
 	return (
 		<div className="min-h-screen min-w-screen pt-[16vh] md:px-8 px-4 xl:px-26 2xl:px-36">
 			<ReactHelmet>My cars</ReactHelmet>
-			<p className="text-4xl py-2 text-center font-bold font-mono">
+			<p className="text-4xl py-2 text-center font-bold font-mono dark:text-white">
 				My cars
 			</p>
 			<div className={"grid justify-items-center gap-y-8"}>

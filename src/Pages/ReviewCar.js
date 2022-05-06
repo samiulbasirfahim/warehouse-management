@@ -12,7 +12,7 @@ const ReviewCar = () => {
 	const navigate = useNavigate()
 	const { carId } = useParams({})
 	const [user] = useAuthState(auth)
-	const { car, setCar } = useLoadSingleCar(carId)
+	const { car, setCar } = useLoadSingleCar("https://quiet-mesa-05314.herokuapp.com/car/"+carId)
 	if (!car) {
 		return (
 			<div className="h-screen w-screen flex items-center justify-center">

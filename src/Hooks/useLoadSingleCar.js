@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from "react"
 
-const useLoadSingleCar = (carId) => {
-    const [car, setCar] = useState()
+const useLoadSingleCar = (url) => {
+	const [car, setCar] = useState()
 	useEffect(() => {
-		fetch("https://quiet-mesa-05314.herokuapp.com/car/" + carId)
+		fetch(url)
 			.then((res) => res.json())
 			.then((data) => setCar(data))
 	}, [])
-      return {car, setCar}
-};
+	return { car, setCar }
+}
 
-export default useLoadSingleCar;
+export default useLoadSingleCar

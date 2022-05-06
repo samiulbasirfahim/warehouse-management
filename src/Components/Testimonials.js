@@ -1,9 +1,17 @@
 import React from "react"
 import SingleTestimonial from "./SingleTestimonial"
 import useLoadTestimonials from "../Hooks/useLoadTestimonials"
+import { PropagateLoader } from "react-spinners"
 
 const Testimonials = () => {
 	const {testimonial} = useLoadTestimonials()
+	if (!testimonial) {
+		return (
+			<div className="h-screen bg-white dark:bg-gray-600 w-screen flex items-center justify-center">
+				<PropagateLoader speedMultiplier={1}></PropagateLoader>
+			</div>
+		)
+	}
 	return (
 		<div>
 			<div className="py-16 border-y-2 border-gray-400">

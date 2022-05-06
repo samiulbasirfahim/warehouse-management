@@ -6,9 +6,10 @@ import { useScrollTracker } from "react-scroll-tracker"
 import { useAuthState } from "react-firebase-hooks/auth"
 import auth from "../firebase.init"
 import { signOut } from "firebase/auth"
+import { PropagateLoader } from "react-spinners"
 
 const Header = ({ darkMode, handleDarkMode }) => {
-	const [user] = useAuthState(auth)
+	const [user, loading] = useAuthState(auth)
 	const location = useLocation()
 	const [scrollY, setScrollY] = useState(0)
 	const { scrollY: scrollwork } = useScrollTracker()
@@ -22,7 +23,13 @@ const Header = ({ darkMode, handleDarkMode }) => {
 		borderRadius: "15px",
 		border: "0px",
 	}
-
+	if (loading) {
+		return (
+			<div className="h-screen  w-screen flex items-center justify-center">
+				<PropagateLoader speedMultiplier={6}></PropagateLoader>
+			</div>
+		)
+	}
 	return (
 		<div>
 			<header
@@ -135,9 +142,9 @@ const Header = ({ darkMode, handleDarkMode }) => {
 								className={
 									" font-bold  py-[8px]  mx-0  lg:px-[15px]  px-16 xl:px-[30px]  hover:text-[#90ba14]"
 								}
-								to={"/review"}
+								to={"/feedback"}
 							>
-								Review
+								Feedback
 							</NavLink>
 							<button
 								onClick={() => handleDarkMode()}

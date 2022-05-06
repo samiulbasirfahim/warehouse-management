@@ -5,8 +5,19 @@ import RandomCar from "../Components/RandomCar"
 import ReactHelmet from "../Components/ReactHelmet"
 import CustomerReview from "./CustomerReview"
 import Testimonials from "../Components/Testimonials"
+import auth from "../firebase.init"
+import { useAuthState } from "react-firebase-hooks/auth"
+import { PropagateLoader } from "react-spinners"
 
 const Home = () => {
+	const [, loading] = useAuthState(auth)
+	if (loading) {
+		return (
+			<div className="h-screen bg-white dark:bg-gray-600 w-screen flex items-center justify-center">
+				<PropagateLoader speedMultiplier={1}></PropagateLoader>
+			</div>
+		)
+	}
 	return (
 		<div>
 			<ReactHelmet>Home</ReactHelmet>

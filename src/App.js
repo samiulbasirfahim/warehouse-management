@@ -20,7 +20,7 @@ function App() {
 	return (
 		<div className={`${isDarkMode && "dark"} dark`}>
 			<AnimatedCursor />
-			<div className="min-h-[100vh]">
+			<div className="min-h-[100vh] dark:bg-gray-600">
 				<Header></Header>
 				{/* 
     React router routes setup

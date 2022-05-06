@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 const Footer = () => {
 	return (
-		<div className="mx-auto bg-gray-800 mt-8 xl:px-20 lg:px-12 sm:px-6 px-4 py-12">
+		<div className="mx-auto dark:bg-gray-800 bg-slate-50 mt-8 xl:px-20 lg:px-12 sm:px-6 px-4 py-12">
 			<div className="flex flex-col items-center justify-center">
 				<div>
 					<p className="font-bold text-2xl text-[#ff5722]">
@@ -19,7 +19,7 @@ const Footer = () => {
 					</Link>
 					<Link
 						to="/my-cars"
-						className="hover:text-gray-500 text-base cursor-pointer leading-4 text-gray-800 dark:text-gray-200"
+						className="hover:text-gray-500  text-base cursor-pointer leading-4 text-gray-800 dark:text-gray-200"
 					>
 						my Cars
 					</Link>

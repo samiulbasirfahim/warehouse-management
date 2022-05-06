@@ -15,7 +15,7 @@ const EditCarInfo = () => {
 	const from = location?.state?.from || "/"
 	const { id } = useParams()
 	const { car } = useLoadSingleCar(id)
-    const [carInfo, setCarInfo] = useState({
+	const [carInfo, setCarInfo] = useState({
 		img: "",
 	})
 	if (!car) {
@@ -67,7 +67,7 @@ const EditCarInfo = () => {
 					navigate(from)
 
 					toast("Product edited successfully")
-				} else  {
+				} else {
 					event.target.reset()
 					toast("Product not edited")
 				}
@@ -76,87 +76,106 @@ const EditCarInfo = () => {
 	}
 	return (
 		<div className="flex pt-[14vh] w-full justify-center items-center min-h-screen">
-			<ReactHelmet>Add car</ReactHelmet>
+			<ReactHelmet>Edit</ReactHelmet>
 			<form
-				className="bg-slate-100 rounded p-6 w-5/6 flex flex-col"
+				className="bg-slate-100 dark:bg-gray-800 rounded p-6 w-5/6 flex flex-col"
 				onSubmit={handleEditCar}
 			>
-				<div className="flex flex-col border lg:px-6 py-2 mt-4 rounded ">
-					<label htmlFor="imgLink">Image link</label>
+				<div className="flex flex-col border dark:border-gray-600 lg:px-6 py-2 mt-4 rounded ">
+					<label className="dark:text-white" htmlFor="imgLink">
+						Image link
+					</label>
 					<div className="flex justify-between items-center">
 						<input
-                            onChange={(e) => setCarInfo({...car, imgLink: e.target.value})}
-							defaultValue={car?.imgLink}
-							className="text-gray-800 w-full bg-slate-300 mr-6 rounded mt-2 h-12"
+							onBlur={(e) =>
+								setCarInfo({ ...carInfo, img: e.target.value })
+							}
+							className="text-gray-800 dark:text-gray-200 w-full bg-slate-300 dark:bg-gray-600 mr-6 rounded mt-2 h-12"
 							id="imgLink"
 							name="imgLink"
 							type="text"
 							placeholder="Image Link"
 							required
+							defaultValue={car?.imgLink}
 						></input>
-						<img className="lg:w-64 w-36" src={!carInfo.imgLink ? car?.imgLink : carInfo.imgLink} alt="" />
+						<img
+							className="lg:w-64 w-36"
+							src={carInfo.img}
+							alt=""
+						/>
 					</div>
 				</div>
-				<div className="flex flex-col w-full border lg:px-6 py-2 mt-4 rounded ">
-					<label htmlFor="title">Title / car name</label>
+				<div className="flex flex-col w-full border dark:border-gray-600  dark:border-gray-600-gray-600 lg:px-6 py-2 mt-4 rounded ">
+					<label className="dark:text-white" htmlFor="title">
+						Title / car name
+					</label>
 					<input
-						defaultValue={car?.title}
-						className="text-gray-800 bg-slate-300 rounded mt-2 h-12 pl-2"
+						className="text-gray-800 dark:text-gray-200 bg-slate-300 dark:bg-gray-600 rounded mt-2 h-12 pl-2"
 						id="title"
 						name="title"
 						type="text"
 						placeholder="Title"
 						required
+						defaultValue={car?.title}
 					></input>
 				</div>
-				<div className="flex flex-col w-full border lg:px-6 py-2 mt-4 rounded ">
-					<label htmlFor="description">Description</label>
+				<div className="flex flex-col w-full border dark:border-gray-600 lg:px-6 py-2 mt-4 rounded ">
+					<label className="dark:text-white" htmlFor="description">
+						Description
+					</label>
 					<textarea
-						defaultValue={car?.description}
-						className="text-gray-800 bg-slate-300 rounded mt-2 h-12 pl-2"
+						className="text-gray-800 dark:text-gray-200 bg-slate-300 dark:bg-gray-600 rounded mt-2 h-12 pl-2"
 						id="description"
 						name="description"
 						type="text"
 						placeholder="Description"
 						required
+						defaultValue={car?.description}
 					></textarea>
 				</div>
-				<div className="flex flex-col w-full border lg:px-6 py-2 mt-4 rounded ">
-					<label htmlFor="stock">Stock</label>
+				<div className="flex flex-col w-full border dark:border-gray-600 lg:px-6 py-2 mt-4 rounded ">
+					<label className="dark:text-white" htmlFor="stock">
+						Stock
+					</label>
 					<input
-						defaultValue={car?.stock}
-						className="text-gray-800 bg-slate-300 rounded mt-2 h-12 pl-2"
+						className="text-gray-800 dark:text-gray-200 bg-slate-300 dark:bg-gray-600 rounded mt-2 h-12 pl-2"
 						id="stock"
 						name="stock"
 						type="number"
 						min={1}
 						placeholder="Stock"
 						required
+						defaultValue={car?.stock}
 					></input>
 				</div>
-				<div className="flex flex-col w-full border lg:px-6 py-2 mt-4 rounded ">
-					<label htmlFor="supplierName"> Supplier name</label>
+				<div className="flex flex-col w-full border dark:border-gray-600 lg:px-6 py-2 mt-4 rounded ">
+					<label className="dark:text-white" htmlFor="supplierName">
+						{" "}
+						Supplier name
+					</label>
 					<input
-						defaultValue={car?.supplierName}
-						className="text-gray-800 bg-slate-300 rounded mt-2 h-12 pl-2"
+						className="text-gray-800 dark:text-gray-200 bg-slate-300 dark:bg-gray-600 rounded mt-2 h-12 pl-2"
 						id="supplierName"
 						name="supplierName"
 						type="text"
 						placeholder="Supplier Name"
+						defaultValue={user?.displayName}
 						required
 					></input>
 				</div>
-				<div className="flex flex-col w-full border lg:px-6 py-2 mt-4 rounded ">
-					<label htmlFor="price">Price</label>
+				<div className="flex flex-col w-full border dark:border-gray-600 lg:px-6 py-2 mt-4 rounded ">
+					<label className="dark:text-white" htmlFor="price">
+						Price
+					</label>
 					<input
-						defaultValue={car?.price}
-						className="text-gray-800 bg-slate-300 rounded mt-2 h-12 pl-2"
+						className="text-gray-800 dark:text-gray-200 bg-slate-300 dark:bg-gray-600 rounded mt-2 h-12 pl-2"
 						id="Price"
 						name="price"
 						type="number"
 						min={1}
 						placeholder="Price"
 						required
+						defaultValue={car?.price}
 					></input>
 				</div>
 				<input

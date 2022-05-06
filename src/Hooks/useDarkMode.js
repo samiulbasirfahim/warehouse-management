@@ -1,19 +1,28 @@
 import { useEffect, useState } from "react"
 
-const useDarkMode = () => {
-	const [isDarkMode, setIsDarkMode] = useState(false)
+const useSetDarkMode = () => {
+	const [isDarkModeOn, setIsDarkModeOn] = useState()
+	const [darkMode, setDarkMode] = useState(null)
 	useEffect(() => {
-		const previousDarkMode = JSON.parse(
-			window.localStorage.getItem("darkMode")
-		)
-		setIsDarkMode(previousDarkMode)
+		const loadData = async () => {
+			const darkModeOn = await localStorage.getItem("isDarkMode")
+			setIsDarkModeOn(darkModeOn)
+		}
+		loadData()
 	}, [])
+	useEffect(() => {
+		if (isDarkModeOn === "true") {
+			setDarkMode(true)
+		} else {
+			setDarkMode(false)
+		}
+	}, [isDarkModeOn])
 	const handleDarkMode = () => {
-		setIsDarkMode(!isDarkMode)
-		window.localStorage.setItem("darkMode", JSON.stringify(isDarkMode))
+		setDarkMode(!darkMode)
+		localStorage.setItem("isDarkMode", !darkMode)
 	}
 
-	return { isDarkMode, handleDarkMode }
+	return { darkMode, handleDarkMode }
 }
 
-export default useDarkMode
+export default useSetDarkMode

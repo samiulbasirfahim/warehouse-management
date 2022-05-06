@@ -16,12 +16,16 @@ import Footer from "./Shared/Footer"
 import Header from "./Shared/Header"
 
 function App() {
-	const { isDarkMode } = useDarkMode()
+	const { darkMode, handleDarkMode } = useDarkMode()
+	console.log(darkMode)
 	return (
-		<div className={`${isDarkMode && "dark"} dark`}>
+		<div className={`${darkMode && "dark"}`}>
 			<AnimatedCursor />
 			<div className="min-h-[100vh] dark:bg-gray-700">
-				<Header></Header>
+				<Header
+					darkMode={darkMode}
+					handleDarkMode={handleDarkMode}
+				></Header>
 				{/* 
     React router routes setup
     */}

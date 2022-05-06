@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react"
 import { Link, NavLink, useLocation } from "react-router-dom"
 import { HiOutlineMenu, HiOutlineMenuAlt1 } from "react-icons/hi"
+import { BsFillSunFill, BsMoon } from "react-icons/bs"
 import { useScrollTracker } from "react-scroll-tracker"
 import { useAuthState } from "react-firebase-hooks/auth"
 import auth from "../firebase.init"
 import { signOut } from "firebase/auth"
 
-const Header = () => {
+const Header = ({ darkMode, handleDarkMode }) => {
 	const [user] = useAuthState(auth)
 	const location = useLocation()
 	const [scrollY, setScrollY] = useState(0)
@@ -127,6 +128,12 @@ const Header = () => {
 							>
 								Blog
 							</NavLink>
+							<button
+								onClick={() => handleDarkMode()}
+								className="font-bold  py-[8px]  mx-0  lg:px-[15px]  px-16 xl:px-[30px]  hover:text-[#90ba14]"
+							>
+								{!darkMode ? <BsFillSunFill /> : <BsMoon />}
+							</button>
 							{!user ? (
 								<NavLink
 									style={({ isActive }) =>

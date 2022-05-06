@@ -1,4 +1,3 @@
-import { data } from "autoprefixer"
 import React, { useEffect, useState } from "react"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { PropagateLoader } from "react-spinners"

@@ -2,16 +2,14 @@ import { signOut } from "firebase/auth"
 import React from "react"
 import { useAuthState } from "react-firebase-hooks/auth"
 import toast from "react-hot-toast"
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom"
+import { Link,  useNavigate, useParams } from "react-router-dom"
 import { PropagateLoader } from "react-spinners"
 import ReactHelmet from "../Components/ReactHelmet"
 import auth from "../firebase.init"
 import useLoadSingleCar from "../Hooks/useLoadSingleCar"
 
 const ReviewCar = () => {
-	const location = useLocation()
 	const navigate = useNavigate()
-	const from = location?.state?.from || "/"
 	const { carId } = useParams({})
 	const [user] = useAuthState(auth)
 	const { car, setCar } = useLoadSingleCar(carId)
@@ -124,7 +122,7 @@ const ReviewCar = () => {
 
 							{car.stock > 0 ? (
 								<p className="text-base leading-4 mt-4 text-blue-600">
-									Stocks: {car?.stock != 0 && car?.stock}
+									Stocks: {car?.stock !== 0 && car?.stock}
 								</p>
 							) : (
 								<p className="text-base leading-4 mt-4 text-red-600">

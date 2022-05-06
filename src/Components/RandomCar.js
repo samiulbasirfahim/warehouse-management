@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
+import { PropagateLoader } from "react-spinners"
 import useLoadSingleCar from "../Hooks/useLoadSingleCar"
 
 const RandomCar = () => {
@@ -7,14 +8,25 @@ const RandomCar = () => {
 		"https://quiet-mesa-05314.herokuapp.com/car-random"
 	)
 	const [car, setCar] = useState({})
+	const [loading, setLoading] = useState(false)
 	useEffect(() => {
 		setCar(carArray ? carArray[0] : {})
-		console.log(car)
 	}, [carArray])
 	const handleLoadAnotherCar = () => {
+		setLoading(true)
 		fetch("https://quiet-mesa-05314.herokuapp.com/car-random")
 			.then((response) => response.json())
-			.then((data) => setCar(data[0]))
+			.then((data) => {
+				setCar(data[0])
+				setLoading(false)
+			})
+	}
+	if (loading) {
+		return (
+			<div className="h-screen bg-white dark:bg-gray-600 w-screen flex items-center justify-center">
+				<PropagateLoader speedMultiplier={1}></PropagateLoader>
+			</div>
+		)
 	}
 	return (
 		<div className="py-16  border-t-2 border-gray-400">

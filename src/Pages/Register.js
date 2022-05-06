@@ -112,12 +112,12 @@ const Register = () => {
 		<div>
 			<ReactHelmet>Register</ReactHelmet>
 			<div className="">
-				<div className="pt-[12vh] bg-white min-h-screen min-w-screen flex items-center justify-center">
+				<div className="pt-[12vh]  min-h-screen min-w-screen flex items-center justify-center">
 					<div className="xl:px-20 lg:px-10 sm:px-6 px-4 lg:py-12 py-9 lg:w-2/3 xl:1/3">
-						<div className="bg-slate-100 shadow-lg rounded  w-full lg:px-10 sm:px-6 sm:py-10 px-2 py-6">
+						<div className="bg-slate-100 dark:bg-gray-800 shadow-lg rounded  w-full lg:px-10 sm:px-6 sm:py-10 px-2 py-6">
 							<p
 								tabIndex={0}
-								className="focus:outline-none text-2xl font-extrabold leading-6 text-gray-800"
+								className="focus:outline-none text-2xl font-extrabold leading-6 text-gray-800 dark:text-gray-200"
 							>
 								Create a new account
 							</p>
@@ -127,7 +127,7 @@ const Register = () => {
 								<div>
 									<label
 										htmlFor="email"
-										className="text-sm font-medium leading-none text-gray-800"
+										className="text-sm font-medium leading-none text-gray-800 dark:text-gray-200"
 									>
 										Full Name
 									</label>
@@ -150,7 +150,7 @@ const Register = () => {
 								<div>
 									<label
 										htmlFor="email"
-										className="text-sm font-medium leading-none text-gray-800"
+										className="text-sm font-medium leading-none text-gray-800 dark:text-gray-200"
 									>
 										Email
 									</label>
@@ -168,7 +168,7 @@ const Register = () => {
 								<div className="mt-6 w-full">
 									<label
 										htmlFor="password"
-										className="text-sm font-medium leading-none text-gray-800"
+										className="text-sm font-medium leading-none text-gray-800 dark:text-gray-200"
 									>
 										Password
 									</label>
@@ -216,7 +216,7 @@ const Register = () => {
 								<div className="mt-6 w-full">
 									<label
 										htmlFor="confirmPassword"
-										className="text-sm font-medium leading-none text-gray-800"
+										className="text-sm font-medium leading-none text-gray-800 dark:text-gray-200"
 									>
 										Confirm Password
 									</label>

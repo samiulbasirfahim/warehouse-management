@@ -9,7 +9,7 @@ const SocialLogin = () => {
 		<div>
 			<button
 				onClick={() => signInWithGoogle()}
-				className="p-3 border justify-center rounded-lg border-gray-700 flex items-center w-full mt-10 hover:bg-gray-100"
+				className="p-3 border justify-center rounded-lg border-gray-700 dark:bg-gray-200 flex items-center w-full mt-10 hover:bg-gray-100 dark:hover:bg-gray-500"
 			>
 				<ImGoogle />
 				<p className="text-base font-medium ml-4 text-gray-700">

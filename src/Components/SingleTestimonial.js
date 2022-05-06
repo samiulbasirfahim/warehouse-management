@@ -20,7 +20,7 @@ const SingleTestimonial = ({ t: { subject, feedback, email, name } }) => {
 					<p className="text-gray-500">{email}</p>
 				</div>
 				<img
-					className="w-24 rounded-full"
+					className="w-24 rounded-full hidden lg:block"
 					src="https://i.ibb.co/LtSrBZh/Parker96.webp"
 					alt=""
 				/>

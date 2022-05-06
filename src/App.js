@@ -18,7 +18,7 @@ import Header from "./Shared/Header"
 function App() {
 	const { isDarkMode } = useDarkMode()
 	return (
-		<div className={`${isDarkMode && "dark"}`}>
+		<div className={`${isDarkMode && "dark"} dark`}>
 			<AnimatedCursor />
 			<div className="min-h-[100vh]">
 				<Header></Header>

@@ -25,7 +25,7 @@ const Header = () => {
 	return (
 		<div>
 			<header
-				className={`fixed w-full z-50 top-0  duration-500 lg:px-8 xl:px-26 2xl:px-36 flex items-center justify-between ${
+				className={`fixed w-full z-50 top-0  duration-500 lg:px-8 xl:px-26 2xl:px-16 flex items-center justify-between ${
 					scrollY < 200
 						? "min-h-[14vh] backdrop-blur-[0px] text-white lg:text-black"
 						: "min-h-[8vh] backdrop-blur-[50px] text-white bg-black/60"
@@ -33,14 +33,14 @@ const Header = () => {
 			>
 				<div
 					className={
-						"absolute lg:static top-0 h-full right-0 z-50 bg-white lg:bg-transparent w-full lg:w-auto flex justify-between items-center px-4 lg:px-auto"
+						"absolute lg:static top-0 h-full right-0 z-50 bg-white dark:bg-gray-800 lg:bg-transparent lg:dark:bg-transparent w-full lg:w-auto flex justify-between items-center px-4 lg:px-auto"
 					}
 				>
 					<Link
 						to="/"
 						className="text-3xl lg:text-5xl font-bold flex items-center font-mono"
 					>
-						<span className="pr-2 lg:pr-4 text-[#ff5722] border-t-2 border-r-2 border-[#90ba14] pt-1 lg:pt-2">
+						<span className="pr-2 lg:pr-4 text-[#ff5722] border-t-2 border-r-2 bg-transparent border-[#90ba14] pt-1 lg:pt-2">
 							Rapid
 						</span>
 						<span className="text-[#90ba14] border-b-2 border-l-2  border-[#ff5722] lg:pb-2 pb-1">
@@ -71,7 +71,7 @@ const Header = () => {
 									isActive ? activeNavStyle : {}
 								}
 								className={
-									" font-bold  py-[8px]  mx-0  lg:px-[15px] xl:px-[30px]  hover:text-[#90ba14]"
+									" font-bold  py-[8px]  mx-0 lg:px-[15px]  px-16 xl:px-[30px]  hover:text-[#90ba14]"
 								}
 								to={"/"}
 							>
@@ -84,7 +84,7 @@ const Header = () => {
 											isActive ? activeNavStyle : {}
 										}
 										className={
-											"   font-bold  py-[8px] ml-0  lg:px-[15px] xl:px-[30px]  hover:text-[#90ba14]"
+											"   font-bold  py-[8px] ml-0  lg:px-[15px] mx-0 px-16 xl:px-[30px]  hover:text-[#90ba14]"
 										}
 										to={"/inventory"}
 									>
@@ -95,7 +95,7 @@ const Header = () => {
 											isActive ? activeNavStyle : {}
 										}
 										className={
-											"   font-bold  py-[8px] mx-0   lg:px-[15px] xl:px-[30px]  hover:text-[#90ba14]"
+											"   font-bold  py-[8px] mx-0   lg:px-[15px] px-16 xl:px-[30px]  hover:text-[#90ba14]"
 										}
 										to={"/add-car"}
 										state={{ from: location }}
@@ -108,7 +108,7 @@ const Header = () => {
 											isActive ? activeNavStyle : {}
 										}
 										className={
-											" font-bold  py-[8px]  mx-0  lg:px-[15px] xl:px-[30px]  hover:text-[#90ba14]"
+											" font-bold  py-[8px]  mx-0  lg:px-[15px] px-16 xl:px-[30px]  hover:text-[#90ba14]"
 										}
 										to={"/my-cars"}
 									>
@@ -121,7 +121,7 @@ const Header = () => {
 									isActive ? activeNavStyle : {}
 								}
 								className={
-									" font-bold  py-[8px]  mx-0  lg:px-[15px] xl:px-[30px]  hover:text-[#90ba14]"
+									" font-bold  py-[8px]  mx-0  lg:px-[15px]  px-16 xl:px-[30px]  hover:text-[#90ba14]"
 								}
 								to={"/blog"}
 							>
@@ -134,7 +134,7 @@ const Header = () => {
 									}
 									to="/login"
 									className={
-										" font-bold py-[8px] mx-0  lg:px-[15px] xl:px-[30px]  lg:bg-transparent rounded-[15px] lg:rounded-none lg:border-l-2 hover:text-[#90ba14] text-[#ff5722]"
+										" font-bold py-[8px] mx-0  lg:px-[15px] px-16 xl:px-[30px]  lg:bg-transparent rounded-[15px] lg:rounded-none lg:border-l-2 hover:text-[#90ba14] text-[#ff5722]"
 									}
 								>
 									Login
@@ -142,7 +142,7 @@ const Header = () => {
 							) : (
 								<button
 									onClick={() => signOut(auth)}
-									className="hover:text-[#90ba14] hover:bg-white hover:rounded-r-[15px] hover:border-0 font-bold py-[8px] mx-0  lg:px-[15px] xl:px-[30px]  bg-white lg:bg-transparent rounded-[15px] lg:rounded-none lg:border-l-2 text-[#ff5722]"
+									className="hover:text-[#90ba14] hover:bg-white hover:rounded-r-[15px] hover:border-0 font-bold py-[8px]  lg:px-[15px] mx-0 px-16 xl:px-[30px]  bg-white lg:bg-transparent rounded-[15px] lg:rounded-none lg:border-l-2 text-[#ff5722]"
 								>
 									Sign out
 								</button>

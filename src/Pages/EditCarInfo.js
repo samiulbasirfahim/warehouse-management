@@ -124,13 +124,14 @@ const EditCarInfo = () => {
 						Description
 					</label>
 					<textarea
-						className="text-gray-800 dark:text-gray-200 bg-slate-300 dark:bg-gray-600 rounded mt-2 h-12 pl-2"
+						className="text-gray-800 dark:text-gray-200 bg-slate-300 dark:bg-gray-600 rounded mt-2 pl-2"
 						id="description"
 						name="description"
 						type="text"
 						placeholder="Description"
 						required
 						defaultValue={car?.description}
+						rows={8}
 					></textarea>
 				</div>
 				<div className="flex flex-col w-full border dark:border-gray-600 lg:px-6 py-2 mt-4 rounded ">
@@ -176,6 +177,7 @@ const EditCarInfo = () => {
 						placeholder="Price"
 						required
 						defaultValue={car?.price}
+						
 					></input>
 				</div>
 				<input

@@ -12,7 +12,7 @@ const Testimonials = () => {
 						<h1 className="hidden lg:block text-2xl leading-tight md:text-4xl xl:text-5xl font-semibold text-gray-800 dark:text-gray-200 xl:w-2/3 pr-16 lg:pr-0">
 							Our supplier love us
 						</h1>
-						<p className="mt-4 text-base leading-normal text-gray-600 md:w-2/3 lg:w-3/4 pr-16 lg:pr-0">
+						<p className="mt-4 text-base leading-normal text-gray-600 dark:text-gray-400 md:w-2/3 lg:w-3/4 pr-16 lg:pr-0">
 							Over 500 showroom stay with us.
 						</p>
 						<a

@@ -60,7 +60,7 @@ const CarSmall = ({
 	}
 
 	return (
-		<div className="bg-slate-300 w-[95%] lg:w-5/6  flex flex-col lg:flex-row lg:items-center lg:justify-between rounded-2xl">
+		<div className="bg-slate-200 dark:bg-gray-800 w-[95%] lg:w-5/6  flex flex-col lg:flex-row lg:items-center lg:justify-between rounded-2xl">
 			<div className="flex justify-between lg:w-3/4 px-4 py-2">
 				<img
 					className="lg:w-60 w-24  rounded-2xl"
@@ -68,14 +68,14 @@ const CarSmall = ({
 					alt=""
 				/>
 				<div className="flex flex-col justify-center">
-					<p className="font-bold">{title}</p>
-					<p className="flex justify-evenly font-thin font-mono text-gray-700">
+					<p className="font-bold dark:text-white">{title}</p>
+					<p className="flex justify-evenly font-thin font-mono text-gray-700 dark:text-gray-400">
 						Price:${price}
 					</p>
 				</div>
 			</div>
-			<dir className="flex lg:w-1/4 py-2 lg:py-0 justify-around text-xl mt-2 lg:mt-0">
-				<Link state={{ from: location }} to={`/review/${_id}`}>
+			<dir className="flex lg:w-1/4 py-2 px-8 lg:py-0 justify-between items-center  text-xl mt-2 lg:mt-0 dark:text-white lg:flex-col ">
+				<Link className="mb-4" state={{ from: location }} to={`/review/${_id}`}>
 					<MdPreview />
 				</Link>
 				{isShowDelete && (
@@ -83,7 +83,7 @@ const CarSmall = ({
 						<MdDelete />
 					</button>
 				)}
-				<Link to={"/edit-car/" + _id} state={{ from: location }}>
+				<Link className="mt-4" to={"/edit-car/" + _id} state={{ from: location }}>
 					<MdEdit />
 				</Link>
 			</dir>

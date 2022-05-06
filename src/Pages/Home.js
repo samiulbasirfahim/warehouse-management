@@ -4,7 +4,7 @@ import InventoryOverview from "../Components/InventoryOverview"
 import RandomCar from "../Components/RandomCar"
 import ReactHelmet from "../Components/ReactHelmet"
 import CustomerReview from "./CustomerReview"
-import Testimonials from "./Testimonials"
+import Testimonials from "../Components/Testimonials"
 
 const Home = () => {
 	return (

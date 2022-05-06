@@ -51,7 +51,6 @@ const Inventory = () => {
 						setCars={setCars}
 						cars={cars}
 						car={car}
-						isShowDelete={false}
 					></CarSmall>
 				))}
 				{totalCar > 10 && (

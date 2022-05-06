@@ -1,5 +1,5 @@
 import React from "react"
-import SingleTestimonial from "../Components/SingleTestimonial"
+import SingleTestimonial from "./SingleTestimonial"
 import useLoadTestimonials from "../Hooks/useLoadTestimonials"
 
 const Testimonials = () => {

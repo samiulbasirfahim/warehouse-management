@@ -11,6 +11,7 @@ import Login from "./Pages/Login"
 import MyCars from "./Pages/MyCars"
 import Register from "./Pages/Register"
 import ResetPassword from "./Pages/ResetPassword"
+import Review from "./Pages/Review"
 import ReviewCar from "./Pages/ReviewCar"
 import Footer from "./Shared/Footer"
 import Header from "./Shared/Header"
@@ -49,6 +50,7 @@ function App() {
 							</RequireAuth>
 						}
 					></Route>
+					<Route path="/review" element={<Review></Review>}></Route>
 					<Route
 						path="/inventory"
 						element={

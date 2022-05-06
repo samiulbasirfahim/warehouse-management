@@ -10,7 +10,6 @@ const CarSmall = ({
 	car: { description, imgLink, price, title, stock, supplierName, _id },
 	setCars,
 	cars,
-	isShowDelete,
 }) => {
 	const [user] = useAuthState(auth)
 	const navigate = useNavigate()
@@ -75,15 +74,23 @@ const CarSmall = ({
 				</div>
 			</div>
 			<dir className="flex lg:w-1/4 py-2 px-8 lg:py-0 justify-between items-center  text-xl mt-2 lg:mt-0 dark:text-white lg:flex-col ">
-				<Link className="mb-4" state={{ from: location }} to={`/review/${_id}`}>
+				<Link
+					className="mb-4"
+					state={{ from: location }}
+					to={`/review/${_id}`}
+				>
 					<MdPreview />
 				</Link>
-				{isShowDelete && (
-					<button onClick={confirmDelete}>
-						<MdDelete />
-					</button>
-				)}
-				<Link className="mt-4" to={"/edit-car/" + _id} state={{ from: location }}>
+
+				<button onClick={confirmDelete}>
+					<MdDelete />
+				</button>
+
+				<Link
+					className="mt-4"
+					to={"/edit-car/" + _id}
+					state={{ from: location }}
+				>
 					<MdEdit />
 				</Link>
 			</dir>

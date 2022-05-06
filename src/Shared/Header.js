@@ -128,6 +128,17 @@ const Header = ({ darkMode, handleDarkMode }) => {
 							>
 								Blog
 							</NavLink>
+							<NavLink
+								style={({ isActive }) =>
+									isActive ? activeNavStyle : {}
+								}
+								className={
+									" font-bold  py-[8px]  mx-0  lg:px-[15px]  px-16 xl:px-[30px]  hover:text-[#90ba14]"
+								}
+								to={"/review"}
+							>
+								Review
+							</NavLink>
 							<button
 								onClick={() => handleDarkMode()}
 								className="font-bold  py-[8px] mx-0  lg:px-[15px]  px-16 xl:px-[30px]  hover:text-[#90ba14]"

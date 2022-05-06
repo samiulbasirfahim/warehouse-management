@@ -2,7 +2,7 @@ import { signOut } from "firebase/auth"
 import React from "react"
 import { useAuthState } from "react-firebase-hooks/auth"
 import toast from "react-hot-toast"
-import { Link,  useNavigate, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import { PropagateLoader } from "react-spinners"
 import ReactHelmet from "../Components/ReactHelmet"
 import auth from "../firebase.init"
@@ -12,7 +12,9 @@ const ReviewCar = () => {
 	const navigate = useNavigate()
 	const { carId } = useParams({})
 	const [user] = useAuthState(auth)
-	const { car, setCar } = useLoadSingleCar("https://quiet-mesa-05314.herokuapp.com/car/"+carId)
+	const { car, setCar } = useLoadSingleCar(
+		"https://quiet-mesa-05314.herokuapp.com/car/" + carId
+	)
 	if (!car) {
 		return (
 			<div className="h-screen w-screen flex items-center justify-center">
@@ -165,7 +167,6 @@ const ReviewCar = () => {
 									min={0}
 									className="h-10  rounded dark:bg-slate-500"
 									id="addItem"
-									
 								/>
 								<input
 									className="bg-[#ff5722] py-2 cursor-pointer mt-4 rounded"
@@ -177,12 +178,6 @@ const ReviewCar = () => {
 					</div>
 				</div>
 			</div>
-			<Link
-				className="text-white lg:mx-auto block text-2xl mx-8 lg:w-1/2 bg-[#90ba14] hover:bg-[#90ba14]/80 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50  rounded-lg font-bold px-5 py-2.5 text-center items-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30"
-				to="/inventory"
-			>
-				Manage Inventory
-			</Link>
 		</div>
 	)
 }

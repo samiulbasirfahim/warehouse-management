@@ -35,6 +35,15 @@ const Car = ({
 						? description.slice(0, 250) + " ..."
 						: description}
 				</p>
+				{stock > 0 ? (
+					<p className="text-base leading-4 mt-4 text-red-600">
+						Stocks: {stock !== 0 && stock}
+					</p>
+				) : (
+					<p className="text-base leading-4 mt-4 text-red-600">
+						out of stock
+					</p>
+				)}
 				<p className="text-[#ff5722] text-sm">Stock : {stock}</p>
 				<p className="text-[#ff5722] text-sm">
 					Supplier : {supplierName}

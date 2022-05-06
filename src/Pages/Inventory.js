@@ -51,12 +51,10 @@ const Inventory = () => {
 						setCars={setCars}
 						cars={cars}
 						car={car}
-						isShowDelete= {false}
-					>
-					
-					</CarSmall>
+						isShowDelete={false}
+					></CarSmall>
 				))}
-				{pages > 1 && (
+				{totalCar > 10 && (
 					<dir className="min:w-1/2 mx-auto flex justify-center bg-gray-400 py-8 rounded mb-6 flex-wrap px-8">
 						{[...Array(pages).keys()].map((num) => (
 							<button

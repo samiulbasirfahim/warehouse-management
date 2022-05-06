@@ -105,6 +105,7 @@ const ReviewCar = () => {
 							lg:leading-6
 							leading-7
 							text-gray-800
+							dark:text-gray-200
 							mt-2
 						"
 							>
@@ -113,7 +114,7 @@ const ReviewCar = () => {
 						</div>
 
 						<div>
-							<p className="xl:pr-48 text-base lg:leading-tight leading-normal text-gray-800 mt-7">
+							<p className="xl:pr-48 text-base lg:leading-tight leading-normal dark:text-gray-300 text-gray-800 mt-7">
 								{car?.description}
 							</p>
 							<p className="text-base leading-4 mt-2 text-gray-400">
@@ -149,12 +150,12 @@ const ReviewCar = () => {
 								)}
 							</div>
 							<form
-								className=" mt-6 py-2 px-6 rounded-lg bg-slate-100 grid"
+								className=" mt-6 py-2 px-6 rounded-lg bg-slate-100 dark:bg-gray-800 grid"
 								onSubmit={handleAddStock}
 							>
 								<label
 									htmlFor="stock"
-									className="my-2 font-semibold"
+									className="my-2 font-semibold dark:text-white"
 								>
 									Add more on stock
 								</label>
@@ -162,8 +163,9 @@ const ReviewCar = () => {
 									type="number"
 									name="stock"
 									min={0}
-									className="h-10  rounded"
+									className="h-10  rounded dark:bg-slate-500"
 									id="addItem"
+									
 								/>
 								<input
 									className="bg-[#ff5722] py-2 cursor-pointer mt-4 rounded"

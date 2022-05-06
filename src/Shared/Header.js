@@ -130,7 +130,7 @@ const Header = ({ darkMode, handleDarkMode }) => {
 							</NavLink>
 							<button
 								onClick={() => handleDarkMode()}
-								className="font-bold  py-[8px]  mx-0  lg:px-[15px]  px-16 xl:px-[30px]  hover:text-[#90ba14]"
+								className="font-bold  py-[8px] mx-0  lg:px-[15px]  px-16 xl:px-[30px]  hover:text-[#90ba14]"
 							>
 								{!darkMode ? <BsFillSunFill /> : <BsMoon />}
 							</button>

@@ -1,51 +1,51 @@
-import React, { useState } from "react"
+import React from "react"
 
 const Blog = () => {
-	const [question, setQuestion] = useState(1)
-	const answer1 = {
-		js: "JavaScript is a programming language, a kind of high-level scripting programming language, developed by a man named Brendan Eich in 1985, JavaScript is commonly used on the web, and it is object oriented.",
-		node: "Node JS is a JavaScript Runtime environment, it can be used in JavaScript outside of the browser, it is usually used in backend development, it works in asynchronous way and its performance is much better.",
-	}
-	const questions = [
-		"Difference between Javascript and Node Js",
-		"When should i use mongodb? and when should i use node js?",
-		"What is the purpose of jwt?",
-		"Difference between sql and no sql database",
-	]
 	return (
-		<div className="container min-h-[80vh] pt-[12vh]  mx-auto ">
-			<div className="grid">
-				{questions.map((ques, index) => (
-					<button
-						key={index}
-						onClick={() => console.log(index + 1)}
-						className="text-gray-800 dark:border-gray-200 border-gray-700  dark:text-gray-100 bg-slate-300 dark:bg-slate-800 text-center py-4 rounded-xl  border-2 m-2"
-					>
-						{ques}
-					</button>
-				))}
-			</div>
+		<div className="min-h-[80vh] pt-[14vh] container mx-auto grid">
+			<TableLikeAns
+				question={"Difference between Javascript and Node Js"}
+				answer1={`JavaScript is a programming language, a kind of
+                high-level scripting programming language, developed by
+                a man named Brendan Eich in 1985, JavaScript is commonly
+                used on the web, and it is object oriented.`}
+				answer2={`Node JS is a JavaScript Runtime environment, it can be
+                used in JavaScript outside of the browser, it is usually
+                used in backend development, it works in asynchronous
+                way and its performance is much better.`}
+			></TableLikeAns>
 
-			<div>
-				<div className="flex justify-center w-full ">
-					<div className="w-full  font-mono p-14">{answer1.js}</div>
-					<div className="w-full border-l-2 border-yellow-400 font-mono p-14">
-						{answer1.node}
-					</div>
-				</div>
-			</div>
+			<TableLikeAns
+				question={
+					"When should i use mongodb? and when should i use node js?"
+				}
+				answer1={`Mongo db is the most popular nosql databse, mongodb is the best choise when my data doesn’t fit well into the schema of a relational database.  and this is document structure based databse, its usally used in ecommerce platform.if i represent my data in a form of a bunch of documents, MongoDB could be a good choice for me.`}
+				answer2={`nodejs is the most suitable server technology for real-time applications, it is so fast for its single thread nature, it is usually used in the backend of the application, nodejs should be used in all applications that require very fast data transfer.`}
+			></TableLikeAns>
+
+			<TableLikeAns
+				question={"Difference between sql and no sql database"}
+				answer1={`sql is a structured query database, Maria DB, mysql is an example of a sql database. All data is structured, here schema has to be set, sql does not have much freedom that day`}
+				answer2={`nosql is non relational, in the example of nosql
+                There are mongodb, amazonadynamodb. In nosql the data is not structured, there is no need to set the schema, the schema is set dynamically. Nosql best for working independently`}
+			></TableLikeAns>
 		</div>
 	)
 }
 
-const QuestionButton = ({ setQuestion, ques }) => {
+const TableLikeAns = ({ question, answer1, answer2 }) => {
 	return (
-		<button
-			onClick={() => setQuestion(4)}
-			className="text-gray-800 dark:border-gray-200 border-gray-700  dark:text-gray-100 bg-slate-300 dark:bg-slate-800 text-center py-4 rounded-xl  border-2 m-2"
-		>
-			{ques}
-		</button>
+		<div className="mt-14">
+			<p className="text-yellow-600 border-b-2 text-center font-bold font-mono px-4 lg:text-2xl border-b-red-700">
+				{question}
+			</p>
+			<div className="flex flex-col lg:flex-row  justify-center">
+				<div className="w-full py-8 px-6 lg:border-r-2 border-b-2 lg:border-b-0 border-lime-500">
+					{answer1}
+				</div>
+				<div className="w-full py-8 px-6">{answer2}</div>
+			</div>
+		</div>
 	)
 }
 

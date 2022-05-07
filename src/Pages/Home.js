@@ -8,6 +8,7 @@ import Testimonials from "../Components/Testimonials"
 import auth from "../firebase.init"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { PropagateLoader } from "react-spinners"
+import Location from "../Components/Location"
 
 const Home = () => {
 	const [, loading] = useAuthState(auth)
@@ -24,6 +25,7 @@ const Home = () => {
 			<HomeBanner></HomeBanner>
 			<InventoryOverview></InventoryOverview>
 			<RandomCar></RandomCar>
+			<Location></Location>
 			<Testimonials></Testimonials>
 			<CustomerReview></CustomerReview>
 		</div>

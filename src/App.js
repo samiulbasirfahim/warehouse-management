@@ -23,7 +23,6 @@ function App() {
 		<div className={`${darkMode && "dark"}`}>
 			<AnimatedCursor
 				trailingSpeed={4}
-				outerSize={"15px"}
 				outerAlpha={0.4}
 			/>
 			<div className="min-h-[100vh] dark:bg-gray-700">

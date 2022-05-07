@@ -9,6 +9,14 @@
 	font-family: "Poppins", sans-serif;
 	scroll-behavior: smooth;
 }
+
+body{
+	overflow-x: hidden;
+}
 div::-webkit-scrollbar {
 	display: none;
+}
+div.map.leaflet-container.leaflet-touch.leaflet-retina.leaflet-fade-anim {
+    /*border: 5px solid red;*/
+    z-index: -1;
 }

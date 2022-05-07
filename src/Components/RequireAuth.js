@@ -1,19 +1,15 @@
 import React from "react"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { Navigate, useLocation } from "react-router-dom"
-import { PropagateLoader } from "react-spinners"
 import auth from "../firebase.init"
 import VerifyEmail from "../Pages/VerifyEmail"
+import Spinner from "./Spinner"
 
 const RequireAuth = ({ children }) => {
 	const [user, loading] = useAuthState(auth)
 	const location = useLocation()
 	if (loading) {
-		return (
-			<div className="h-screen  w-screen flex items-center justify-center">
-				<PropagateLoader speedMultiplier={6}></PropagateLoader>
-			</div>
-		)
+		return <Spinner></Spinner>
 	}
 	console.log(user)
 

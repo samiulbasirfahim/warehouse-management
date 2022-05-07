@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import { PropagateLoader } from "react-spinners"
 import useLoadSingleCar from "../Hooks/useLoadSingleCar"
+import Spinner from "./Spinner"
 
 const RandomCar = () => {
 	const { car: carArray } = useLoadSingleCar(
@@ -22,11 +22,7 @@ const RandomCar = () => {
 			})
 	}
 	if (loading) {
-		return (
-			<div className="h-screen bg-white dark:bg-gray-600 w-screen flex items-center justify-center">
-				<PropagateLoader speedMultiplier={1}></PropagateLoader>
-			</div>
-		)
+		return <Spinner></Spinner>
 	}
 	return (
 		<div id="randomCar" className="py-16 -z-50 border-t-2 border-gray-400">

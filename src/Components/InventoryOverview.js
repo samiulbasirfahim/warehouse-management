@@ -1,17 +1,13 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import { PropagateLoader } from "react-spinners"
 import useLoadData from "../Hooks/useLoadData"
 import Car from "./Car"
+import Spinner from "./Spinner"
 
 const InventoryOverview = () => {
 	const { cars } = useLoadData("https://quiet-mesa-05314.herokuapp.com/cars?limit=5")
 	if (!cars) {
-		return (
-			<div className="h-screen  w-screen flex items-center justify-center">
-				<PropagateLoader speedMultiplier={6}></PropagateLoader>
-			</div>
-		)
+		return <Spinner></Spinner>
 	}
 	return (
 		<div id="inventory-overview" className=" border-y-2 border-gray-400">

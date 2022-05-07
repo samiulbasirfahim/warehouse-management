@@ -2,9 +2,9 @@ import { signOut } from "firebase/auth"
 import React from "react"
 import { useAuthState } from "react-firebase-hooks/auth"
 import toast from "react-hot-toast"
-import { Link, useNavigate, useParams } from "react-router-dom"
-import { PropagateLoader } from "react-spinners"
+import {  useNavigate, useParams } from "react-router-dom"
 import ReactHelmet from "../Components/ReactHelmet"
+import Spinner from "../Components/Spinner"
 import auth from "../firebase.init"
 import useLoadSingleCar from "../Hooks/useLoadSingleCar"
 
@@ -16,11 +16,7 @@ const ReviewCar = () => {
 		"https://quiet-mesa-05314.herokuapp.com/car/" + carId
 	)
 	if (!car) {
-		return (
-			<div className="h-screen w-screen flex items-center justify-center">
-				<PropagateLoader speedMultiplier={6}></PropagateLoader>
-			</div>
-		)
+		return <Spinner />
 	}
 	const jwtToken = JSON.parse(
 		window.localStorage.getItem("authorization-token")

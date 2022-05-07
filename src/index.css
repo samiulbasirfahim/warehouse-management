@@ -10,13 +10,17 @@
 	scroll-behavior: smooth;
 }
 
-body{
+#header {
+	z-index: 900;
+}
+
+body {
 	overflow-x: hidden;
 }
 div::-webkit-scrollbar {
 	display: none;
 }
 div.map.leaflet-container.leaflet-touch.leaflet-retina.leaflet-fade-anim {
-    /*border: 5px solid red;*/
-    z-index: -1;
+	/*border: 5px solid red;*/
+	z-index: -1;
 }

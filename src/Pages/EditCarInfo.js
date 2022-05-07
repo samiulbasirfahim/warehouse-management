@@ -3,8 +3,8 @@ import React, { useState } from "react"
 import { useAuthState } from "react-firebase-hooks/auth"
 import toast from "react-hot-toast"
 import { useLocation, useNavigate, useParams } from "react-router-dom"
-import { PropagateLoader } from "react-spinners"
 import ReactHelmet from "../Components/ReactHelmet"
+import Spinner from "../Components/Spinner"
 import auth from "../firebase.init"
 import useLoadSingleCar from "../Hooks/useLoadSingleCar"
 
@@ -21,11 +21,7 @@ const EditCarInfo = () => {
 		img: "",
 	})
 	if (!car) {
-		return (
-			<div className="h-screen   w-screen flex items-center justify-center">
-				<PropagateLoader speedMultiplier={6}></PropagateLoader>
-			</div>
-		)
+		return <Spinner></Spinner>
 	}
 	const handleEditCar = (event) => {
 		event.preventDefault()

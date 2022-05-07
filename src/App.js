@@ -21,10 +21,9 @@ function App() {
 	console.log(darkMode)
 	return (
 		<div className={`${darkMode && "dark"}`}>
-			<AnimatedCursor
-				trailingSpeed={4}
-				outerAlpha={0.4}
-			/>
+			<div className="cursor">
+				<AnimatedCursor trailingSpeed={4} outerAlpha={0.4} />
+			</div>
 			<div className="min-h-[100vh] dark:bg-gray-700">
 				<Header
 					darkMode={darkMode}

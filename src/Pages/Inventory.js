@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import { PropagateLoader } from "react-spinners"
 import CarSmall from "../Components/CarSmall"
 import ReactHelmet from "../Components/ReactHelmet"
+import Spinner from "../Components/Spinner"
 import useLoadData from "../Hooks/useLoadData"
 
 const Inventory = () => {
@@ -29,11 +29,7 @@ const Inventory = () => {
 		`https://quiet-mesa-05314.herokuapp.com/cars?limit=${limit}&page=${currentPage}`
 	)
 	if (!cars.length > 0) {
-		return (
-			<div className="h-screen  w-screen flex items-center justify-center">
-				<PropagateLoader speedMultiplier={6}></PropagateLoader>
-			</div>
-		)
+		return <Spinner></Spinner>
 	}
 	return (
 		<div className="min-h-screen min-w-screen pt-[16vh] md:px-8 px-4 xl:px-26 2xl:px-36">

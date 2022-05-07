@@ -14,19 +14,22 @@ L.Marker.prototype.options.icon = DefaultIcon
 const Map = () => {
 	const center = [24.70300714748863, 90.36966291202745]
 	return (
-		<MapContainer
-			center={center}
-			zoom={10}
-			style={{ width: "100vw", height: "50vh" }}
-		>
-			<TileLayer
-				url="https://api.maptiler.com/maps/openstreetmap/256/{z}/{x}/{y}@2x.jpg?key=jJQ2Gut7FQMdZetXTlG1"
-				attribution='<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
-			/>
-			<Marker position={center}>
-				<Popup>"Our warehouses location"</Popup>
-			</Marker>
-		</MapContainer>
+		<div className="z-[-100]">
+			<MapContainer
+				center={center}
+				zoomControl={false}
+				zoom={10}
+				style={{ width: "100vw", height: "50vh" }}
+			>
+				<TileLayer
+					url="https://api.maptiler.com/maps/openstreetmap/256/{z}/{x}/{y}@2x.jpg?key=jJQ2Gut7FQMdZetXTlG1"
+					attribution='<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
+				/>
+				<Marker position={center}>
+					<Popup>"Our warehouses location"</Popup>
+				</Marker>
+			</MapContainer>
+		</div>
 	)
 }
 

@@ -16,6 +16,7 @@ import ReviewCar from "./Pages/ReviewCar"
 import Footer from "./Shared/Footer"
 import Header from "./Shared/Header"
 import Blog from "./Pages/Blog"
+import Page404 from "./Pages/Page404"
 
 function App() {
 	const { darkMode, handleDarkMode } = useDarkMode()
@@ -90,6 +91,7 @@ function App() {
 							</RequireAuth>
 						}
 					></Route>
+					<Route path="*" element={<Page404></Page404>}></Route>
 				</Routes>
 				<Footer></Footer>
 			</div>

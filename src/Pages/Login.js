@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react"
 import { useAuthState } from "react-firebase-hooks/auth"
 import toast from "react-hot-toast"
 import { Link, useLocation, useNavigate } from "react-router-dom"
+import { ClimbingBoxLoader } from "react-spinners"
 import ReactHelmet from "../Components/ReactHelmet"
 import SocialLogin from "../Components/SocialLogin"
 import auth from "../firebase.init"
@@ -29,15 +30,20 @@ const Login = () => {
 			[event.target.name]: event.target.value,
 		})
 	}
-
+	const [isLogin, setIsLogin] = useState(false)
+	console.log(isLogin)
 	const handleLogin = (event) => {
 		event.preventDefault()
+		setIsLogin(true)
 		const email = userInfo.email
 		const password = userInfo.password
 
 		if (userInfo.password !== "" && userInfo.email !== "") {
 			signInWithEmailAndPassword(auth, email, password)
-				.then(() => toast.success("Login successfully"))
+				.then(() => {
+					toast.success("Login successfully")
+					setIsLogin(false)
+				})
 				.catch((error) => {
 					switch (error.code) {
 						case "auth/user-not-found":
@@ -50,14 +56,17 @@ const Login = () => {
 							toast.error("Something went wrong")
 							break
 					}
+					setIsLogin(false)
 				})
 		} else {
 			toast.error("Please fill this form sincerely")
 		}
 	}
+
 	return (
 		<div className="">
 			<ReactHelmet>Login</ReactHelmet>
+			
 			<div className="pt-[12vh] min-h-screen min-w-screen flex items-center justify-center">
 				<div className="xl:px-20 lg:px-10 sm:px-6 px-4 lg:py-12 py-9 lg:w-2/3 xl:1/3">
 					<div className="bg-slate-100 dark:bg-gray-800 shadow-lg rounded  w-full lg:px-10 sm:px-6 sm:py-10 px-2 py-6">
@@ -129,8 +138,10 @@ const Login = () => {
 								<p className="text-xs lg:text-sm mt-4 font-medium leading-none text-gray-500">
 									Forget your password ?
 									<Link
-										state={{ from: from, email: userInfo.email }}
-										
+										state={{
+											from: from,
+											email: userInfo.email,
+										}}
 										to="/reset-password"
 										className="hover:underline text-xs lg:text-sm ml-4 font-medium leading-none text-red-700 cursor-pointer"
 									>

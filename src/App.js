@@ -15,15 +15,16 @@ import Feedback from "./Pages/Feedback"
 import ReviewCar from "./Pages/ReviewCar"
 import Footer from "./Shared/Footer"
 import Header from "./Shared/Header"
+import Blog from "./Pages/Blog"
 
 function App() {
 	const { darkMode, handleDarkMode } = useDarkMode()
 	console.log(darkMode)
 	return (
 		<div className={`${darkMode && "dark"}`}>
-			<div className="cursor">
+			{/* <div className="cursor">
 				<AnimatedCursor trailingSpeed={4} outerAlpha={0.4} />
-			</div>
+			</div> */}
 			<div className="min-h-[100vh] dark:bg-gray-700">
 				<Header
 					darkMode={darkMode}
@@ -35,6 +36,7 @@ function App() {
 				<Routes>
 					<Route path="/" element={<Home></Home>}></Route>
 					<Route path="/login" element={<Login></Login>}></Route>
+					<Route path="/blog" element={<Blog></Blog>}></Route>
 					<Route
 						path="/register"
 						element={<Register></Register>}

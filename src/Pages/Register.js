@@ -11,6 +11,7 @@ import toast from "react-hot-toast"
 import { useAuthState } from "react-firebase-hooks/auth"
 import createJwtToken from "../Utils/Jwt"
 import ReactHelmet from "../Components/ReactHelmet"
+import { ClimbingBoxLoader } from "react-spinners"
 
 const Register = () => {
 	const location = useLocation()
@@ -20,7 +21,7 @@ const Register = () => {
 	useEffect(() => {
 		if (user) {
 			createJwtToken(user.email)
-			navigate(from, {replace: true})
+			navigate(from, { replace: true })
 		}
 	}, [user])
 	const [showPass, setShowPass] = useState(false)
@@ -66,13 +67,17 @@ const Register = () => {
 			setConfirmPasswordError("")
 		}
 	}, [userInfo])
+	const [isLogin, setIsLogin] = useState(false)
+
 	const handleRegister = (event) => {
 		event.preventDefault()
+
 		if (
 			errorName === "" &&
 			errorPassword === "" &&
 			errorConfirmPassword === ""
 		) {
+			setIsLogin(true)
 			createUserWithEmailAndPassword(
 				auth,
 				userInfo.email,
@@ -83,13 +88,18 @@ const Register = () => {
 						displayName: userInfo.name,
 					})
 						.then(() => {
-							sendEmailVerification(auth.currentUser).then(() =>
+							sendEmailVerification(auth.currentUser).then(() => {
 								toast("Check your email for verification mail")
-							)
+								setIsLogin(false)
+							})
 						})
-						.catch((error) => toast.error("something went wrong"))
+						.catch((error) => {
+							toast.error("something went wrong")
+							setIsLogin(false)
+						})
 				)
 				.catch((error) => {
+					setIsLogin(false)
 					switch (error.code) {
 						case "auth/email-already-in-use":
 							toast.error("Email already in use")
@@ -112,6 +122,13 @@ const Register = () => {
 		<div>
 			<ReactHelmet>Register</ReactHelmet>
 			<div className="">
+				{isLogin && (
+					<div className="pt-[12vh] min-h-screen flex items-center justify-center absolute w-full backdrop-blur">
+						<ClimbingBoxLoader
+							speedMultiplier={5}
+						></ClimbingBoxLoader>
+					</div>
+				)}
 				<div className="pt-[12vh]  min-h-screen min-w-screen flex items-center justify-center">
 					<div className="xl:px-20 lg:px-10 sm:px-6 px-4 lg:py-12 py-9 lg:w-2/3 xl:1/3">
 						<div className="bg-slate-100 dark:bg-gray-800 shadow-lg rounded  w-full lg:px-10 sm:px-6 sm:py-10 px-2 py-6">
@@ -269,7 +286,6 @@ const Register = () => {
 										Already have a account ?
 										<Link
 											state={{ from: from }}
-											
 											to={"/login"}
 											className="hover:underline text-xs lg:text-sm ml-4 font-medium leading-none text-blue-700 cursor-pointer"
 										>

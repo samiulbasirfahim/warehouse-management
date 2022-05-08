@@ -37,7 +37,6 @@ const ReviewCar = () => {
 				return res.json()
 			})
 			.then((data) => {
-				console.log(data)
 				toast.success("Product delivered successfully")
 				if (data.modifiedCount > 0) {
 					setCar({

@@ -25,7 +25,6 @@ const EditCarInfo = () => {
 	}
 	const handleEditCar = (event) => {
 		event.preventDefault()
-		console.log(event)
 		const title = event.target.title.value
 		const imgLink = event.target.imgLink.value
 		const description = event.target.description.value
@@ -69,7 +68,6 @@ const EditCarInfo = () => {
 					event.target.reset()
 					toast("Product not edited")
 				}
-				// console.log(data)
 			})
 	}
 	return (

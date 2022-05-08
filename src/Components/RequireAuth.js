@@ -11,7 +11,6 @@ const RequireAuth = ({ children }) => {
 	if (loading) {
 		return <Spinner></Spinner>
 	}
-	console.log(user)
 
 	if (!user) {
 		return (

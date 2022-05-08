@@ -31,7 +31,6 @@ const Login = () => {
 		})
 	}
 	const [isLogin, setIsLogin] = useState(false)
-	console.log(isLogin)
 	const handleLogin = (event) => {
 		event.preventDefault()
 		setIsLogin(true)
@@ -66,7 +65,11 @@ const Login = () => {
 	return (
 		<div className="">
 			<ReactHelmet>Login</ReactHelmet>
-			
+			{isLogin && (
+				<div className="pt-[12vh] min-h-screen flex items-center justify-center absolute w-full backdrop-blur">
+					<ClimbingBoxLoader speedMultiplier={5}></ClimbingBoxLoader>
+				</div>
+			)}
 			<div className="pt-[12vh] min-h-screen min-w-screen flex items-center justify-center">
 				<div className="xl:px-20 lg:px-10 sm:px-6 px-4 lg:py-12 py-9 lg:w-2/3 xl:1/3">
 					<div className="bg-slate-100 dark:bg-gray-800 shadow-lg rounded  w-full lg:px-10 sm:px-6 sm:py-10 px-2 py-6">

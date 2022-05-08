@@ -20,7 +20,6 @@ const Inventory = () => {
 		setPages(Math.ceil(totalCar / limit))
 	}, [totalCar, limit])
 	useEffect(() => {
-		console.log(pages)
 		if (currentPage > pages) {
 			setCurrentPage(Math.max(pages))
 		}

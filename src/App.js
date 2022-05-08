@@ -20,7 +20,6 @@ import Page404 from "./Pages/Page404"
 
 function App() {
 	const { darkMode, handleDarkMode } = useDarkMode()
-	console.log(darkMode)
 	return (
 		<div className={`${darkMode && "dark"}`}>
 			{/* <div className="cursor">

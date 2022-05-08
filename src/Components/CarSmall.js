@@ -59,7 +59,10 @@ const CarSmall = ({
 	}
 
 	return (
-		<div className="bg-slate-200 dark:bg-gray-800 w-[95%] lg:w-5/6  flex flex-col lg:flex-row lg:items-center lg:justify-between rounded-2xl">
+		<div
+			data-aos="zoom-in-down"
+			className="bg-slate-200 dark:bg-gray-800 w-[95%] lg:w-5/6  flex flex-col lg:flex-row lg:items-center lg:justify-between rounded-2xl"
+		>
 			<div className="flex justify-between lg:w-3/4 px-4 py-2">
 				<img
 					className="lg:w-60 w-24  rounded-2xl"

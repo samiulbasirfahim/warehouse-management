@@ -35,7 +35,12 @@ const Blog = () => {
 
 const TableLikeAns = ({ question, answer1, answer2 }) => {
 	return (
-		<div className="mt-14">
+		<div
+			className="mt-14"
+			data-aos="zoom-in-down"
+			data-aos-easing="linear"
+			data-aos-duration="500"
+		>
 			<p className="text-yellow-600 border-b-2 text-center font-bold font-mono px-4 lg:text-2xl border-b-red-700">
 				{question}
 			</p>

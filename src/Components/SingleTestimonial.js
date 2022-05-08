@@ -3,6 +3,7 @@ import React from "react"
 const SingleTestimonial = ({ t: { subject, feedback, email, name } }) => {
 	return (
 		<div
+			data-aos="zoom-in-down"
 			role="listitem"
 			className="shadow dark:bg-gray-800 bg-white  rounded p-4 xl:p-8 lg:rounded-br-3xl"
 		>

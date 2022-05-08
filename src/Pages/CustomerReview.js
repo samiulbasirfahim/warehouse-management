@@ -58,7 +58,12 @@ const CustomerReview = () => {
 							Latest 3 review are show in testimonial page .
 						</p>
 					</div>
-					<div className="flex flex-col w-full lg:w-2/3 justify-center">
+					<div
+						data-aos="zoom-in-up"
+						data-aos-easing="linear"
+						data-aos-duration="200"
+						className="flex flex-col w-full lg:w-2/3 justify-center"
+					>
 						<div className="container w-full px-4">
 							<div className="flex flex-wrap justify-center">
 								<div className="w-full lg:w-6/12 px-4">
@@ -68,6 +73,9 @@ const CustomerReview = () => {
 												Have a suggestion?
 											</h4>
 											<form
+												data-aos="zoom-in"
+												data-aos-easing="linear"
+												data-aos-duration="500"
 												id="feedbackForm"
 												onSubmit={handleReview}
 											>

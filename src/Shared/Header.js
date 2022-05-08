@@ -39,7 +39,7 @@ const Header = ({ darkMode, handleDarkMode }) => {
 				>
 					<Link
 						to="/"
-						className="text-3xl lg:text-5xl font-bold flex items-center font-mono"
+						className="text-3xl lg:text-2xl xl:text-3xl font-bold flex items-center font-mono"
 					>
 						<span className="pr-2 lg:pr-4 text-[#ff5722] border-t-2 border-r-2 bg-transparent border-[#90ba14] pt-1 lg:pt-2">
 							Rapid
@@ -72,7 +72,7 @@ const Header = ({ darkMode, handleDarkMode }) => {
 									isActive ? activeNavStyle : {}
 								}
 								className={
-									" font-bold  py-[8px]  mx-0 lg:px-[15px]  px-16 xl:px-[30px]  hover:text-[#90ba14]"
+									"font-bold py-[8px] mx-0 lg:px-[15px] px-16 xl:px-[30px] hover:text-[#90ba14]"
 								}
 								to={"/"}
 							>
@@ -85,7 +85,7 @@ const Header = ({ darkMode, handleDarkMode }) => {
 											isActive ? activeNavStyle : {}
 										}
 										className={
-											"   font-bold  py-[8px] ml-0  lg:px-[15px] mx-0 px-16 xl:px-[30px]  hover:text-[#90ba14]"
+											"font-bold  py-[8px] ml-0  lg:px-[15px] mx-0 px-16 xl:px-[30px]  hover:text-[#90ba14]"
 										}
 										to={"/inventory"}
 									>
@@ -96,12 +96,12 @@ const Header = ({ darkMode, handleDarkMode }) => {
 											isActive ? activeNavStyle : {}
 										}
 										className={
-											"   font-bold  py-[8px] mx-0   lg:px-[15px] px-16 xl:px-[30px]  hover:text-[#90ba14]"
+											"font-bold  py-[8px] mx-0 lg:px-[15px] px-16 xl:px-[30px]  hover:text-[#90ba14]"
 										}
 										to={"/add-car"}
 										state={{ from: location }}
 									>
-										Add
+										Add car
 									</NavLink>
 
 									<NavLink

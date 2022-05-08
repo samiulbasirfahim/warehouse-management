@@ -33,6 +33,7 @@ const Testimonials = () => {
 					>
 						{testimonial.map((t) => (
 							<SingleTestimonial
+								
 								key={t._id}
 								t={t}
 							></SingleTestimonial>

@@ -29,6 +29,24 @@ const Blog = () => {
 				answer2={`nosql is non relational, in the example of nosql
                 There are mongodb, amazonadynamodb. In nosql the data is not structured, there is no need to set the schema, the schema is set dynamically. Nosql best for working independently`}
 			></TableLikeAns>
+			<div
+				className="mt-14"
+				data-aos="zoom-in-down"
+				data-aos-easing="linear"
+				data-aos-duration="500"
+			>
+				<p className="text-yellow-600 border-b-2 text-center font-bold font-mono px-4 lg:text-2xl border-b-red-700">
+					What is the purpose of Jwt and how it works?
+				</p>
+				<p className="w-full py-8 px-6">
+					Jwt, json web token, The full form of jwt is json web token,
+					basically jwt token used for security purpose, When an user
+					logged in, we create a jwt token for him, we can authorize
+					user by check her token, is it valid and the token
+					information is matched with the user information, it means
+					he is authorized.
+				</p>
+			</div>
 		</div>
 	)
 }
@@ -36,7 +54,7 @@ const Blog = () => {
 const TableLikeAns = ({ question, answer1, answer2 }) => {
 	return (
 		<div
-			className="mt-14"
+			className="mt-14 mb-6"
 			data-aos="zoom-in-down"
 			data-aos-easing="linear"
 			data-aos-duration="500"
@@ -45,9 +63,9 @@ const TableLikeAns = ({ question, answer1, answer2 }) => {
 				{question}
 			</p>
 			<div className="flex flex-col lg:flex-row  justify-center">
-				<div className="w-full py-8 px-6 lg:border-r-2 border-b-2 lg:border-b-0 border-lime-500">
+				<p className="w-full py-8 px-6 lg:border-r-2 border-b-2 lg:border-b-0 border-lime-500">
 					{answer1}
-				</div>
+				</p>
 				<div className="w-full py-8 px-6">{answer2}</div>
 			</div>
 		</div>

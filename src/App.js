@@ -22,9 +22,9 @@ function App() {
 	const { darkMode, handleDarkMode } = useDarkMode()
 	return (
 		<div className={`${darkMode && "dark"}`}>
-			{/* <div className="cursor">
+			<div className="cursor">
 				<AnimatedCursor trailingSpeed={4} outerAlpha={0.4} />
-			</div> */}
+			</div>
 			<div className="min-h-[100vh] dark:bg-gray-700">
 				<Header
 					darkMode={darkMode}

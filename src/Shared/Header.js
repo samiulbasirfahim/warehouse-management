@@ -89,7 +89,7 @@ const Header = ({ darkMode, handleDarkMode }) => {
 										}
 										to={"/inventory"}
 									>
-										Manage cars
+										Inventory
 									</NavLink>
 									<NavLink
 										style={({ isActive }) =>
@@ -101,7 +101,7 @@ const Header = ({ darkMode, handleDarkMode }) => {
 										to={"/add-car"}
 										state={{ from: location }}
 									>
-										Add car
+										Add
 									</NavLink>
 
 									<NavLink
